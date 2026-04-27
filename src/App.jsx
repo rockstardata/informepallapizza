@@ -38,52 +38,52 @@ const fmtShort = (n) => {
   return n.toFixed(0) + "€";
 };
 
-const MONTHS_EXT = ["Ene25","Feb25","Mar25","Abr25","May25","Jun25","Jul25","Ago25","Sep25","Oct25","Nov25","Dic25","Ene26","Feb26"];
+const MONTHS_EXT = ["Ene25","Feb25","Mar25","Abr25","May25","Jun25","Jul25","Ago25","Sep25","Oct25","Nov25","Dic25","Ene26","Feb26","Mar26"];
 
 // ====== DATA ======
 const descuadreCaja = [
-  { city: "Bilbao", neto: -1149.07, falta: -1884.70, sobra: 735.63, dias: 22, registros: 394 },
-  { city: "Burgos", neto: -3400.94, falta: -5369.13, sobra: 1968.19, dias: 55, registros: 387 },
-  { city: "Donosti", neto: -26835.17, falta: -38688.55, sobra: 11853.38, dias: 138, registros: 371 },
-  { city: "Pamplona", neto: -12135.03, falta: -13537.85, sobra: 1402.82, dias: 92, registros: 428 },
-  { city: "Vitoria", neto: -5815.89, falta: -8775.02, sobra: 2959.13, dias: 52, registros: 399 },
-  { city: "Zaragoza", neto: -3878.94, falta: -7778.95, sobra: 3900.01, dias: 70, registros: 434 },
+  { city: "Bilbao", neto: -1149.06, falta: -1884.70, sobra: 735.64, dias: 22, registros: 417 },
+  { city: "Burgos", neto: -3301.52, falta: -5370.43, sobra: 2068.91, dias: 58, registros: 418 },
+  { city: "Donosti", neto: -26289.87, falta: -38722.56, sobra: 12432.69, dias: 141, registros: 394 },
+  { city: "Pamplona", neto: -12350.88, falta: -13896.75, sobra: 1545.87, dias: 97, registros: 459 },
+  { city: "Vitoria", neto: -6173.37, falta: -9134.55, sobra: 2961.18, dias: 60, registros: 431 },
+  { city: "Zaragoza", neto: -4172.19, falta: -8073.20, sobra: 3901.01, dias: 75, registros: 456 },
 ];
 
 const facturasEliminadas = [
-  { city: "Bilbao", count: 22, value: 1106.96 },
+  { city: "Bilbao", count: 24, value: 1320.46 },
   { city: "Burgos", count: 3, value: 199.75 },
-  { city: "Donosti", count: 16, value: 738.34 },
-  { city: "Pamplona", count: 303, value: 18597.19 },
+  { city: "Donosti", count: 22, value: 1089.24 },
+  { city: "Pamplona", count: 320, value: 20023.84 },
   { city: "Vitoria", count: 9, value: 542.90 },
   { city: "Zaragoza", count: 43, value: 2322.04 },
 ];
 
 const productosEliminados = [
-  { city: "Bilbao", total: 528, cocina: 631, facturar: 246, value: 6165.70, vCocina: 6813.30, vFacturar: 2328.85 },
-  { city: "Burgos", total: 159, cocina: 373, facturar: 50, value: 2204.00, vCocina: 3895.60, vFacturar: 433.50 },
-  { city: "Donosti", total: 560, cocina: 873, facturar: 310, value: 8017.45, vCocina: 10416.60, vFacturar: 3245.35 },
-  { city: "Pamplona", total: 838, cocina: 1307, facturar: 581, value: 15579.90, vCocina: 14584.80, vFacturar: 7560.45 },
-  { city: "Vitoria", total: 297, cocina: 281, facturar: 75, value: 4269.50, vCocina: 3229.70, vFacturar: 773.25 },
-  { city: "Zaragoza", total: 933, cocina: 1363, facturar: 527, value: 9168.20, vCocina: 17596.35, vFacturar: 4494.05 },
+  { city: "Bilbao", total: 560, cocina: 643, facturar: 253, value: 6377.45, vCocina: 6923.80, vFacturar: 2409.70 },
+  { city: "Burgos", total: 161, cocina: 385, facturar: 50, value: 2229.00, vCocina: 4008.60, vFacturar: 433.50 },
+  { city: "Donosti", total: 621, cocina: 924, facturar: 365, value: 9121.25, vCocina: 10876.25, vFacturar: 4118.15 },
+  { city: "Pamplona", total: 884, cocina: 1397, facturar: 606, value: 16207.65, vCocina: 15937.45, vFacturar: 7873.70 },
+  { city: "Vitoria", total: 317, cocina: 294, facturar: 75, value: 4568.70, vCocina: 3390.95, vFacturar: 773.25 },
+  { city: "Zaragoza", total: 974, cocina: 1400, facturar: 549, value: 9481.85, vCocina: 17922.40, vFacturar: 4749.60 },
 ];
 
 const mermas = [
-  { city: "Bilbao", value: 2386.07, items: 109, conCoste: 102, sinCoste: 7 },
+  { city: "Bilbao", value: 2628.07, items: 115, conCoste: 108, sinCoste: 7 },
   { city: "Burgos", value: 11.69, items: 5, conCoste: 5, sinCoste: 0 },
   { city: "Donosti", value: 1157.29, items: 41, conCoste: 41, sinCoste: 0 },
-  { city: "Pamplona", value: 2644.36, items: 87, conCoste: 83, sinCoste: 4 },
-  { city: "Vitoria", value: 2730.91, items: 97, conCoste: 82, sinCoste: 15 },
+  { city: "Pamplona", value: 3494.36, items: 111, conCoste: 107, sinCoste: 4 },
+  { city: "Vitoria", value: 3907.91, items: 128, conCoste: 113, sinCoste: 15 },
   { city: "Zaragoza", value: 232.63, items: 45, conCoste: 41, sinCoste: 4 },
 ];
 
 const ventasPorLocal = [
-  { city: "Bilbao", ventas: 329173.19 },
-  { city: "Burgos", ventas: 270612.70 },
-  { city: "Donosti", ventas: 443891.69 },
-  { city: "Pamplona", ventas: 593685.15 },
-  { city: "Vitoria", ventas: 313189.06 },
-  { city: "Zaragoza", ventas: 449254.41 },
+  { city: "Bilbao", ventas: 345215.58 },
+  { city: "Burgos", ventas: 287379.59 },
+  { city: "Donosti", ventas: 460122.16 },
+  { city: "Pamplona", ventas: 627387.21 },
+  { city: "Vitoria", ventas: 330166.95 },
+  { city: "Zaragoza", ventas: 466487.47 },
 ];
 
 const desviaciones = [
@@ -94,11 +94,12 @@ const desviaciones = [
   { mes: "Dic 25", value: 126110.84, locales: "Bilbao, Burgos, Donosti, Pamplona, Vitoria" },
   { mes: "Ene 26", value: 5984.87, locales: "Bilbao, Burgos, Donosti, Pamplona, Vitoria" },
   { mes: "Feb 26", value: 10006.14, locales: "Bilbao, Burgos, Donosti, Pamplona, Vitoria" },
+  { mes: "Mar 26", value: -7706.29, locales: "Bilbao, Donosti, Pamplona, Vitoria" },
 ];
 
 const topEmpleadosFacturas = [
-  { name: "ARIANNE", city: "Pamplona", count: 188, value: 12582.78 },
-  { name: "UNAX", city: "Pamplona", count: 61, value: 3810.35 },
+  { name: "ARIANNE", city: "Pamplona", count: 195, value: 13266.03 },
+  { name: "UNAX", city: "Pamplona", count: 71, value: 4553.75 },
   { name: "IÑAKI", city: "Pamplona", count: 29, value: 1203.44 },
   { name: "LEA", city: "Pamplona", count: 25, value: 1000.62 },
   { name: "JUDITH", city: "Zaragoza", count: 13, value: 847.60 },
@@ -108,12 +109,12 @@ const topEmpleadosFacturas = [
 ];
 
 const cajaMensual = {
-  Bilbao: [{m:1,v:-160.54},{m:2,v:30.52},{m:3,v:0.0},{m:4,v:1.9},{m:5,v:-89.94},{m:6,v:-1082.85},{m:7,v:281.13},{m:8,v:-28.69},{m:9,v:3.75},{m:10,v:-104.37},{m:11,v:0.03},{m:12,v:0.0},{m:13,v:0.0},{m:14,v:-0.01}],
-  Burgos: [{m:1,v:-691.52},{m:2,v:73.0},{m:3,v:-386.23},{m:4,v:69.61},{m:5,v:-239.87},{m:6,v:58.71},{m:7,v:-399.96},{m:8,v:19.81},{m:9,v:-10.31},{m:10,v:119.06},{m:11,v:174.1},{m:12,v:-1857.14},{m:13,v:-536.67},{m:14,v:202.93}],
-  Donosti: [{m:1,v:0},{m:2,v:-3428.94},{m:3,v:-3397.38},{m:4,v:-7678.87},{m:5,v:-2578.23},{m:6,v:-1741.42},{m:7,v:-5234.1},{m:8,v:-4150.83},{m:9,v:-189.73},{m:10,v:313.79},{m:11,v:260.9},{m:12,v:66.9},{m:13,v:900.68},{m:14,v:38.34}],
-  Pamplona: [{m:1,v:-1699.93},{m:2,v:-1741.71},{m:3,v:-0.16},{m:4,v:-320.75},{m:5,v:-3059.26},{m:6,v:-336.39},{m:7,v:179.38},{m:8,v:118.98},{m:9,v:-605.27},{m:10,v:-916.5},{m:11,v:-596.94},{m:12,v:-1696.01},{m:13,v:-613.15},{m:14,v:-847.32}],
-  Vitoria: [{m:1,v:0.0},{m:2,v:0.06},{m:3,v:-61.27},{m:4,v:222.51},{m:5,v:-745.1},{m:6,v:-1275.0},{m:7,v:-123.99},{m:8,v:-1137.39},{m:9,v:972.08},{m:10,v:-1386.95},{m:11,v:32.51},{m:12,v:-258.44},{m:13,v:-2057.01},{m:14,v:2.1}],
-  Zaragoza: [{m:1,v:-53.11},{m:2,v:-214.65},{m:3,v:69.11},{m:4,v:-442.1},{m:5,v:-190.44},{m:6,v:-1982.98},{m:7,v:-67.2},{m:8,v:-922.18},{m:9,v:-152.3},{m:10,v:2071.26},{m:11,v:-1034.19},{m:12,v:-323.7},{m:13,v:-445.15},{m:14,v:-191.31}],
+  Bilbao: [{m:1,v:-160.54},{m:2,v:30.52},{m:3,v:0.0},{m:4,v:1.9},{m:5,v:-89.94},{m:6,v:-1082.85},{m:7,v:281.13},{m:8,v:-28.69},{m:9,v:3.75},{m:10,v:-104.37},{m:11,v:0.03},{m:12,v:0.0},{m:13,v:0.0},{m:14,v:-0.01},{m:15,v:0.01}],
+  Burgos: [{m:1,v:-691.52},{m:2,v:73.0},{m:3,v:-386.23},{m:4,v:69.61},{m:5,v:-239.87},{m:6,v:58.71},{m:7,v:-399.96},{m:8,v:19.81},{m:9,v:-10.31},{m:10,v:119.06},{m:11,v:174.1},{m:12,v:-1857.14},{m:13,v:-536.67},{m:14,v:202.93},{m:15,v:102.96}],
+  Donosti: [{m:1,v:0},{m:2,v:-3428.94},{m:3,v:-3397.38},{m:4,v:-7678.87},{m:5,v:-2578.23},{m:6,v:-1741.42},{m:7,v:-5234.1},{m:8,v:-4150.83},{m:9,v:-189.73},{m:10,v:313.79},{m:11,v:260.9},{m:12,v:66.9},{m:13,v:900.68},{m:14,v:38.34},{m:15,v:529.02}],
+  Pamplona: [{m:1,v:-1699.93},{m:2,v:-1741.71},{m:3,v:-0.16},{m:4,v:-320.75},{m:5,v:-3059.26},{m:6,v:-336.39},{m:7,v:179.38},{m:8,v:118.98},{m:9,v:-605.27},{m:10,v:-916.5},{m:11,v:-596.94},{m:12,v:-1696.01},{m:13,v:-613.15},{m:14,v:-847.32},{m:15,v:-215.85}],
+  Vitoria: [{m:1,v:0.0},{m:2,v:0.06},{m:3,v:-58.77},{m:4,v:222.51},{m:5,v:-745.1},{m:6,v:-1275.0},{m:7,v:-123.99},{m:8,v:-1137.39},{m:9,v:972.08},{m:10,v:-1386.95},{m:11,v:32.51},{m:12,v:-258.44},{m:13,v:-2057.01},{m:14,v:2.1},{m:15,v:-359.98}],
+  Zaragoza: [{m:1,v:-53.11},{m:2,v:-214.65},{m:3,v:69.11},{m:4,v:-442.1},{m:5,v:-190.44},{m:6,v:-1982.98},{m:7,v:-67.2},{m:8,v:-922.18},{m:9,v:-152.3},{m:10,v:2071.26},{m:11,v:-1034.19},{m:12,v:-323.7},{m:13,v:-445.15},{m:14,v:-191.31},{m:15,v:-293.25}],
 };
 
 const cajaMensualAll = [];
@@ -201,12 +202,12 @@ const Section1_Resumen = () => {
       <div className="text-center mb-8">
         <h1 className="text-3xl font-black text-gray-900 tracking-tight">INFORME DE ANÁLISIS DE FRAUDE</h1>
         <p className="text-lg text-gray-500 mt-1">PallaPizza — Isla Sicilia</p>
-        <p className="text-sm text-gray-400 mt-1">Periodo: Enero 2025 — Febrero 2026 · Fuentes: T-Spoon Lab + Last.app</p>
+        <p className="text-sm text-gray-400 mt-1">Periodo: Enero 2025 — Marzo 2026 · Fuentes: T-Spoon Lab + Last.app</p>
       </div>
 
       <Card>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <KPI label="Descuadre de caja neto" value={fmt(totalDescuadre)} color="text-red-600" sub="6 locales · Ene25–Feb26" />
+          <KPI label="Descuadre de caja neto" value={fmt(totalDescuadre)} color="text-red-600" sub="6 locales · Ene25–Mar26" />
           <KPI label="Facturas eliminadas" value={fmt(totalFactElim)} color="text-orange-600" sub={`${facturasEliminadas.reduce((s,d)=>s+d.count,0)} facturas`} />
           <KPI label="Productos eliminados" value={fmt(totalProdElim)} color="text-amber-600" sub={`${productosEliminados.reduce((s,d)=>s+d.total,0)} productos`} />
           <KPI label="Mermas registradas" value={fmt(totalMermas)} color="text-green-700" sub="Periodo completo"
@@ -215,7 +216,7 @@ const Section1_Resumen = () => {
       </Card>
 
       <AlertBox type="info">
-        Este informe analiza tres vectores de posible fraude: descuadres de caja, anulaciones de facturas/productos, y desviaciones de inventario. El objetivo es identificar si existe correlación entre las anulaciones, las ausencias de mercancía y el efectivo no ingresado. Periodo analizado: enero 2025 a febrero 2026.
+        Este informe analiza tres vectores de posible fraude: descuadres de caja, anulaciones de facturas/productos, y desviaciones de inventario. El objetivo es identificar si existe correlación entre las anulaciones, las ausencias de mercancía y el efectivo no ingresado. Periodo analizado: enero 2025 a marzo 2026.
       </AlertBox>
     </div>
   );
@@ -237,7 +238,7 @@ const Section2_Caja = () => {
 
   return (
     <div>
-      <SectionTitle icon="💰" title="Descuadres de caja" subtitle="Diferencia entre efectivo esperado (TPV) y efectivo real contado — Ene 2025 a Feb 2026" />
+      <SectionTitle icon="💰" title="Descuadres de caja" subtitle="Diferencia entre efectivo esperado (TPV) y efectivo real contado — Ene 2025 a Mar 2026" />
 
       <Card>
         <div className="grid grid-cols-6 gap-3 mb-6">
@@ -267,12 +268,12 @@ const Section2_Caja = () => {
       </Card>
 
       <AlertBox type="danger">
-        <strong>Donosti</strong> presenta un descuadre neto de <strong>-26.835,17 €</strong>, con 138 de 371 días con faltante de efectivo. Concentrado entre febrero y agosto de 2025 (-28.209 €); de septiembre en adelante el descuadre prácticamente desaparece (+452 €), lo que sugiere que algo cambió (¿empleado, procedimiento?).
+        <strong>Donosti</strong> presenta un descuadre neto de <strong>-26.289,87 €</strong>, con 141 de 394 días con faltante de efectivo. Concentrado entre febrero y agosto de 2025 (-28.210 €); de septiembre en adelante el descuadre prácticamente desaparece (+1.920 €), lo que sugiere que algo cambió (¿empleado, procedimiento?).
       </AlertBox>
 
       <Card className="mt-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-sm text-gray-700">Evolución mensual del descuadre (Ene25–Feb26)</h3>
+          <h3 className="font-semibold text-sm text-gray-700">Evolución mensual del descuadre (Ene25–Mar26)</h3>
           <div className="flex gap-1">
             {Object.keys(cajaMensual).map(c => (
               <button key={c} onClick={() => setSelectedCity(c)}
@@ -309,7 +310,7 @@ const Section3_Facturas = () => {
 
   return (
     <div>
-      <SectionTitle icon="🧾" title="Facturas eliminadas" subtitle="Facturas borradas del sistema tras ser generadas — Ene 2025 a Feb 2026" />
+      <SectionTitle icon="🧾" title="Facturas eliminadas" subtitle="Facturas borradas del sistema tras ser generadas — Ene 2025 a Mar 2026" />
 
       <div className="grid grid-cols-2 gap-4">
         <Card>
@@ -360,7 +361,7 @@ const Section3_Facturas = () => {
       </div>
 
       <AlertBox type="danger">
-        <strong>Pamplona concentra el 76,5% de todas las facturas eliminadas</strong> (303 de 396) por un valor de 18.597,19 €. La empleada ARIANNE acumula 188 facturas eliminadas (12.582,78 €). Esta concentración en un solo local y una sola persona es anómala y requiere investigación.
+        <strong>Pamplona concentra el 76,0% de todas las facturas eliminadas</strong> (320 de 421) por un valor de 20.023,84 €. La empleada ARIANNE acumula 195 facturas eliminadas (13.266,03 €). Esta concentración en un solo local y una sola persona es anómala y requiere investigación.
       </AlertBox>
     </div>
   );
@@ -376,7 +377,7 @@ const Section4_Productos = () => {
 
   return (
     <div>
-      <SectionTitle icon="🍕" title="Productos eliminados" subtitle="Productos borrados de comandas en distintas fases del servicio — Ene 2025 a Feb 2026" />
+      <SectionTitle icon="🍕" title="Productos eliminados" subtitle="Productos borrados de comandas en distintas fases del servicio — Ene 2025 a Mar 2026" />
 
       <Card>
         <div className="grid grid-cols-3 gap-4 mb-4">
@@ -433,7 +434,7 @@ const Section5_Mermas = () => {
 
   return (
     <div>
-      <SectionTitle icon="🗑️" title="Mermas registradas" subtitle="Producto desechado/caducado registrado en T-Spoon Lab — Ene 2025 a Feb 2026" />
+      <SectionTitle icon="🗑️" title="Mermas registradas" subtitle="Producto desechado/caducado registrado en T-Spoon Lab — Ene 2025 a Mar 2026" />
 
       <Card className="mb-4">
         <div className="grid grid-cols-3 gap-4 mb-4">
@@ -473,7 +474,7 @@ const Section5_Mermas = () => {
             ))}
           </div>
           <div className="mt-3 text-xs text-gray-400">
-            Nota: {mermas.reduce((s,d)=>s+d.sinCoste,0)} incidencias registradas sin coste asociado. Burgos y Zaragoza no tienen datos de mermas para enero-febrero 2026. Importes solo incluyen items con coste valorizado.
+            Nota: {mermas.reduce((s,d)=>s+d.sinCoste,0)} incidencias registradas sin coste asociado. Burgos y Zaragoza no tienen datos de mermas para 2026. Donosti no tiene datos de mermas para marzo 2026. Importes solo incluyen items con coste valorizado.
           </div>
         </Card>
 
@@ -522,7 +523,7 @@ const Section6_Desviaciones = () => (
     <SectionTitle icon="📦" title="Desviaciones de almacén" subtitle="Diferencia entre consumo teórico y real de inventario — T-Spoon Lab" />
 
     <Card>
-      <div className="grid grid-cols-7 gap-2 mb-4">
+      <div className="grid grid-cols-8 gap-2 mb-4">
         {desviaciones.map(d => (
           <div key={d.mes} className={`text-center p-3 rounded-lg ${d.value > 50000 ? "bg-red-50" : d.value < -10000 ? "bg-green-50" : d.value > 10000 ? "bg-orange-50" : "bg-gray-50"}`}>
             <div className="text-xs text-gray-500">{d.mes}</div>
@@ -535,7 +536,7 @@ const Section6_Desviaciones = () => (
       </div>
 
       <AlertBox type="warning">
-        <strong>Cobertura variable por mes:</strong> no todos los locales tienen desviaciones de almacén registradas cada mes. Agosto solo incluye Bilbao y Burgos; octubre y noviembre no incluyen Bilbao ni Donosti; diciembre no incluye Zaragoza; enero y febrero 2026 no incluyen Zaragoza. Los totales mensuales no son directamente comparables.
+        <strong>Cobertura variable por mes:</strong> no todos los locales tienen desviaciones de almacén registradas cada mes. Agosto solo incluye Bilbao y Burgos; octubre y noviembre no incluyen Bilbao ni Donosti; diciembre no incluye Zaragoza; enero y febrero 2026 no incluyen Zaragoza; marzo 2026 no incluye Burgos ni Zaragoza. Los totales mensuales no son directamente comparables.
       </AlertBox>
 
       <AlertBox type="info">
@@ -547,12 +548,12 @@ const Section6_Desviaciones = () => (
 
 const Section7_Correlacion = () => {
   const correlaciones = [
-    { city: "Bilbao", factElim: -1149.07, factValue: 1106.96, label: "Bajo riesgo" },
-    { city: "Burgos", factElim: -3400.94, factValue: 199.75, label: "Descuadre alto, pocas anulaciones" },
-    { city: "Donosti", factElim: -26835.17, factValue: 738.34, label: "Descuadre muy alto, pocas anulaciones" },
-    { city: "Pamplona", factElim: -12135.03, factValue: 18597.19, label: "Ambos indicadores altos" },
-    { city: "Vitoria", factElim: -5815.89, factValue: 542.90, label: "Moderado" },
-    { city: "Zaragoza", factElim: -3878.94, factValue: 2322.04, label: "Moderado" },
+    { city: "Bilbao", factElim: -1149.06, factValue: 1320.46, label: "Bajo riesgo" },
+    { city: "Burgos", factElim: -3301.52, factValue: 199.75, label: "Descuadre alto, pocas anulaciones" },
+    { city: "Donosti", factElim: -26289.87, factValue: 1089.24, label: "Descuadre muy alto, pocas anulaciones" },
+    { city: "Pamplona", factElim: -12350.88, factValue: 20023.84, label: "Ambos indicadores altos" },
+    { city: "Vitoria", factElim: -6173.37, factValue: 542.90, label: "Moderado" },
+    { city: "Zaragoza", factElim: -4172.19, factValue: 2322.04, label: "Moderado" },
   ];
 
   const scatterData = correlaciones.map(d => ({
@@ -612,15 +613,15 @@ const Section7_Correlacion = () => {
           <div className="grid grid-cols-2 gap-3 mt-3">
             <div className="p-3 bg-red-50 rounded-lg border border-red-100">
               <div className="font-bold text-red-800 text-sm">🔴 Donosti — Patrón sospechoso</div>
-              <p className="text-xs text-red-700 mt-1">Descuadre de caja de -26.835 € con relativamente pocas anulaciones (16 facturas). El problema se concentró entre febrero y agosto 2025 y desapareció en septiembre. Esto sugiere un problema puntual con el manejo de efectivo, posiblemente vinculado a un empleado o turno específico.</p>
+              <p className="text-xs text-red-700 mt-1">Descuadre de caja de -26.290 € con relativamente pocas anulaciones (22 facturas). El problema se concentró entre febrero y agosto 2025 y desapareció en septiembre. Esto sugiere un problema puntual con el manejo de efectivo, posiblemente vinculado a un empleado o turno específico.</p>
             </div>
             <div className="p-3 bg-orange-50 rounded-lg border border-orange-100">
               <div className="font-bold text-orange-800 text-sm">🟠 Pamplona — Patrón de anulaciones</div>
-              <p className="text-xs text-orange-700 mt-1">303 facturas eliminadas (18.597 €) + descuadre de caja de -12.135 €. ARIANNE acumula 188 facturas eliminadas (12.582 €). El volumen de anulaciones sigue creciendo y está vinculado al faltante de caja.</p>
+              <p className="text-xs text-orange-700 mt-1">320 facturas eliminadas (20.024 €) + descuadre de caja de -12.351 €. ARIANNE acumula 195 facturas eliminadas (13.266 €). El volumen de anulaciones sigue creciendo y está vinculado al faltante de caja.</p>
             </div>
             <div className="p-3 bg-yellow-50 rounded-lg border border-yellow-100">
               <div className="font-bold text-yellow-800 text-sm">🟡 Vitoria — Aumento reciente</div>
-              <p className="text-xs text-yellow-700 mt-1">El descuadre ha subido a -5.815 € con un pico notable en enero 2026 (-2.057 €). Este aumento reciente requiere seguimiento para determinar si es un cambio de tendencia o un evento puntual.</p>
+              <p className="text-xs text-yellow-700 mt-1">El descuadre ha subido a -6.173 € con un pico notable en enero 2026 (-2.057 €). Este aumento reciente requiere seguimiento para determinar si es un cambio de tendencia o un evento puntual.</p>
             </div>
             <div className="p-3 bg-green-50 rounded-lg border border-green-100">
               <div className="font-bold text-green-800 text-sm">🟢 Bilbao — Bajo riesgo</div>
@@ -646,17 +647,17 @@ const Section8_Conclusiones = () => (
 
         <div className="p-4 bg-gray-50 rounded-lg">
           <h3 className="font-bold text-gray-800 mb-2">2. Mermas → Mejora parcial, aún insuficiente</h3>
-          <p className="text-sm text-gray-600">Con la incorporación de datos de enero-febrero 2026, las mermas totales ascienden a 9.162,95 € (0,382% sobre ventas). Esto supone una mejora notable frente al 0,077% del periodo anterior, pero sigue por debajo del 0,5–2% esperado en quinta gama. Bilbao, Donosti, Pamplona y Vitoria muestran mejora significativa; Burgos y Zaragoza siguen con registro mínimo.</p>
+          <p className="text-sm text-gray-600">Con la incorporación de datos de enero-febrero 2026, las mermas totales ascienden a 11.431,95 € (0,454% sobre ventas). Esto supone una mejora notable frente al 0,077% del periodo anterior, pero sigue por debajo del 0,5–2% esperado en quinta gama. Bilbao, Donosti, Pamplona y Vitoria muestran mejora significativa; Burgos y Zaragoza siguen con registro mínimo.</p>
         </div>
 
         <div className="p-4 bg-red-50 rounded-lg border border-red-200">
           <h3 className="font-bold text-red-800 mb-2">3. Descuadres de caja → Requiere investigación</h3>
-          <p className="text-sm text-red-700">El faltante neto total de -53.215 € en caja (siendo -26.835 € de Donosti) es significativo. En Donosti el descuadre se detuvo en septiembre 2025; en Pamplona sigue activo y creciendo. Vitoria muestra un pico preocupante en enero 2026 (-2.057 €).</p>
+          <p className="text-sm text-red-700">El faltante neto total de -53.437 € en caja (siendo -26.290 € de Donosti) es significativo. En Donosti el descuadre se detuvo en septiembre 2025; en Pamplona sigue activo y creciendo. Vitoria muestra un pico preocupante en enero 2026 (-2.057 €).</p>
         </div>
 
         <div className="p-4 bg-orange-50 rounded-lg border border-orange-200">
           <h3 className="font-bold text-orange-800 mb-2">4. Anulaciones → Anomalía persistente en Pamplona</h3>
-          <p className="text-sm text-orange-700">Pamplona concentra el 76,5% de las facturas eliminadas (303 de 396). ARIANNE acumula 188 facturas eliminadas por valor de 12.582 €. Respecto al periodo anterior, se han añadido 68 facturas nuevas (23 de ARIANNE, 19 de UNAX). El patrón no solo persiste sino que se intensifica.</p>
+          <p className="text-sm text-orange-700">Pamplona concentra el 76,0% de las facturas eliminadas (320 de 421). ARIANNE acumula 195 facturas eliminadas por valor de 13.266 €. Respecto al periodo anterior, se han añadido facturas nuevas (+7 de ARIANNE, +10 de UNAX). El patrón no solo persiste sino que se intensifica.</p>
         </div>
 
         <div className="p-4 bg-gray-50 rounded-lg">
@@ -673,7 +674,7 @@ const Section8_Conclusiones = () => (
         <div className="space-y-3">
           <h3 className="font-bold text-sm text-gray-800 border-b pb-2">Acciones inmediatas</h3>
           <div className="text-sm text-gray-600 space-y-2">
-            <p>• <strong>Pamplona:</strong> Revisar las 303 facturas eliminadas. Restringir permisos de anulación de ARIANNE y UNAX a supervisión de encargado. Exigir motivo documentado.</p>
+            <p>• <strong>Pamplona:</strong> Revisar las 320 facturas eliminadas. Restringir permisos de anulación de ARIANNE y UNAX a supervisión de encargado. Exigir motivo documentado.</p>
             <p>• <strong>Donosti:</strong> Identificar qué cambió en septiembre 2025 que detuvo el descuadre. Documentar el control implementado para replicarlo en otros locales.</p>
             <p>• <strong>Vitoria:</strong> Investigar el pico de enero 2026 (-2.057 €). Verificar si hubo cambio de personal o de procedimiento.</p>
             <p>• <strong>Todos los locales:</strong> Implementar arqueos de caja con doble verificación en cada cierre de turno.</p>
@@ -727,7 +728,7 @@ export default function Report() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-4 text-center text-xs text-gray-400 border-t border-gray-100 mt-8">
-        Informe generado a partir de datos de T-Spoon Lab y Last.app · PallaPizza sl — Isla Sicilia · Periodo: Enero 2025 — Febrero 2026 · Marzo 2026
+        Informe generado a partir de datos de T-Spoon Lab y Last.app · PallaPizza sl — Isla Sicilia · Periodo: Enero 2025 — Marzo 2026 · Abril 2026
       </div>
     </div>
   );
