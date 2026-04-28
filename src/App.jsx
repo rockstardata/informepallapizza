@@ -48,12 +48,12 @@ const MONTH_LABEL = {
 const CITIES = ["Bilbao","Burgos","Donosti","Pamplona","Vitoria","Zaragoza"];
 
 const SUMMARY = {
-  Bilbao:   { ventas: 361929.23, ventas_total: 398127.86, caja_neto: -1153.86, caja_falta: -1889.80, caja_sobra: 735.94, caja_dias_neg: 23,  caja_registros: 443, fact_count: 26,  fact_value: 1418.26,  prod_antes_count: 607, prod_antes_value: 6766.80, prod_cocina_count: 683, prod_cocina_value: 7224.90, prod_facturar_count: 267, prod_facturar_value: 2548.45, merma_value: 1334.28, merma_items: 143 },
-  Burgos:   { ventas: 302396.41, ventas_total: 332639.79, caja_neto: -3113.90, caja_falta: -5370.93, caja_sobra: 2257.03, caja_dias_neg: 59, caja_registros: 444, fact_count: 4,   fact_value: 324.50,   prod_antes_count: 162, prod_antes_value: 2239.50, prod_cocina_count: 397, prod_cocina_value: 4163.85, prod_facturar_count: 51,  prod_facturar_value: 436.25,  merma_value: 11.69,   merma_items: 5   },
-  Donosti:  { ventas: 477301.78, ventas_total: 525032.44, caja_neto: -25595.31, caja_falta: -38842.42, caja_sobra: 13247.11, caja_dias_neg: 143, caja_registros: 420, fact_count: 24, fact_value: 1263.24, prod_antes_count: 679, prod_antes_value: 9822.70, prod_cocina_count: 948, prod_cocina_value: 11289.75, prod_facturar_count: 391, prod_facturar_value: 4385.97, merma_value: 105.57, merma_items: 41 },
-  Pamplona: { ventas: 658603.99, ventas_total: 724469.91, caja_neto: -12501.42, caja_falta: -14106.05, caja_sobra: 1604.63, caja_dias_neg: 108, caja_registros: 486, fact_count: 337, fact_value: 20895.59, prod_antes_count: 930, prod_antes_value: 16673.65, prod_cocina_count: 1466, prod_cocina_value: 16671.05, prod_facturar_count: 639, prod_facturar_value: 108180.95, merma_value: 706.08, merma_items: 136 },
-  Vitoria:  { ventas: 342272.33, ventas_total: 376500.41, caja_neto: -6167.26, caja_falta: -9157.03, caja_sobra: 2989.77, caja_dias_neg: 61, caja_registros: 457, fact_count: 11, fact_value: 593.90, prod_antes_count: 331, prod_antes_value: 4745.70, prod_cocina_count: 300, prod_cocina_value: 3426.20, prod_facturar_count: 83, prod_facturar_value: 841.00, merma_value: 607.24, merma_items: 155 },
-  Zaragoza: { ventas: 485902.26, ventas_total: 534492.66, caja_neto: -4340.24, caja_falta: -8260.98, caja_sobra: 3920.74, caja_dias_neg: 78, caja_registros: 474, fact_count: 47, fact_value: 2991.79, prod_antes_count: 1020, prod_antes_value: 9834.60, prod_cocina_count: 1456, prod_cocina_value: 18514.35, prod_facturar_count: 565, prod_facturar_value: 4827.25, merma_value: 232.63, merma_items: 45 },
+  Bilbao:   { ventas: 361929.23, ventas_total: 398127.86, caja_neto: -1153.86, caja_falta: -1889.80, caja_sobra: 735.94, caja_dias_neg: 23,  caja_registros: 443, fact_count: 26,  fact_value: 1418.26,  prod_antes_count: 607, prod_antes_value: 6766.80, prod_cocina_count: 683, prod_cocina_value: 7224.90, prod_facturar_count: 267, prod_facturar_value: 2548.45, merma_value: 902.60, merma_items: 167 },
+  Burgos:   { ventas: 302396.41, ventas_total: 332639.79, caja_neto: -3113.90, caja_falta: -5370.93, caja_sobra: 2257.03, caja_dias_neg: 59, caja_registros: 444, fact_count: 4,   fact_value: 324.50,   prod_antes_count: 162, prod_antes_value: 2239.50, prod_cocina_count: 397, prod_cocina_value: 4163.85, prod_facturar_count: 51,  prod_facturar_value: 436.25,  merma_value: 11.69,   merma_items: 19  },
+  Donosti:  { ventas: 477301.78, ventas_total: 525032.44, caja_neto: -25595.31, caja_falta: -38842.42, caja_sobra: 13247.11, caja_dias_neg: 143, caja_registros: 420, fact_count: 24, fact_value: 1263.24, prod_antes_count: 679, prod_antes_value: 9822.70, prod_cocina_count: 948, prod_cocina_value: 11289.75, prod_facturar_count: 391, prod_facturar_value: 4385.97, merma_value: 76.27, merma_items: 31 },
+  Pamplona: { ventas: 658603.99, ventas_total: 724469.91, caja_neto: -12501.42, caja_falta: -14106.05, caja_sobra: 1604.63, caja_dias_neg: 108, caja_registros: 486, fact_count: 337, fact_value: 20895.59, prod_antes_count: 930, prod_antes_value: 16673.65, prod_cocina_count: 1466, prod_cocina_value: 16671.05, prod_facturar_count: 639, prod_facturar_value: 108180.95, merma_value: 625.85, merma_items: 189 },
+  Vitoria:  { ventas: 342272.33, ventas_total: 376500.41, caja_neto: -6167.26, caja_falta: -9157.03, caja_sobra: 2989.77, caja_dias_neg: 61, caja_registros: 457, fact_count: 11, fact_value: 593.90, prod_antes_count: 331, prod_antes_value: 4745.70, prod_cocina_count: 300, prod_cocina_value: 3426.20, prod_facturar_count: 83, prod_facturar_value: 841.00, merma_value: 804.32, merma_items: 196 },
+  Zaragoza: { ventas: 485902.26, ventas_total: 534492.66, caja_neto: -4340.24, caja_falta: -8260.98, caja_sobra: 3920.74, caja_dias_neg: 78, caja_registros: 474, fact_count: 47, fact_value: 2991.79, prod_antes_count: 1020, prod_antes_value: 9834.60, prod_cocina_count: 1456, prod_cocina_value: 18514.35, prod_facturar_count: 565, prod_facturar_value: 4827.25, merma_value: 266.56, merma_items: 122 },
 };
 
 const CAJA_MONTHLY = {
@@ -85,24 +85,26 @@ const PROD_MONTHLY = {
   Zaragoza:[[277.40,628.40,131.50,22,52,14],[209.70,562.90,82.10,25,52,9],[572.90,1067.70,74.40,54,75,9],[159.60,2945.75,73.70,31,91,10],[296.80,1066.95,351.50,55,110,47],[346.55,911.50,471.55,67,85,62],[797.75,991.85,204,75,92,22],[1049.05,1336.40,461.95,96,145,64],[406.90,555.95,564.50,60,79,70],[1859.05,2569.25,973.20,212,269,120],[1492.20,2348.75,448.10,81,87,36],[367.95,1251.25,173.95,58,114,27],[728.75,731.45,404.35,44,63,30],[606.35,631,82,54,50,8],[327.90,325.30,257.20,41,37,22],[335.75,589.95,73.25,45,55,15]],
 };
 
+// Índice 0..15 = Ene25, Feb25, Mar25, Abr25, May25, Jun25, Jul25, Ago25, Sep25, Oct25, Nov25, Dic25, Ene26, Feb26, Mar26, Abr26
 const MERMAS_MONTHLY = {
-  Bilbao:[0,0,0,0,0,0,0,0,0,0,0,664.07,236.10,236.10,82.42,115.58],
-  Burgos:[0,0,0,0,0,0,0,0,0,0,0,11.69,0,0,0,0],
-  Donosti:[0,0,0,0,0,0,0,0,0,0,0,29.30,38.13,38.13,0,0],
-  Pamplona:[0,0,0,0,0,0,0,0,0,0,0,437.36,172.06,0,35.50,61.16],
-  Vitoria:[0,0,0,0,0,0,0,0,0,0,0,279.91,104.25,104.25,51.77,67.06],
-  Zaragoza:[0,0,0,0,0,0,0,0,0,0,0,232.63,0,0,0,0],
+  Bilbao:[0,0,0,0,0,0,0,44.62,23.42,66.85,0,97.50,382.44,89.77,82.42,115.58],
+  Burgos:[0,0,0,0,0,0,0,0,0,0,11.69,0,0,0,0,0],
+  Donosti:[0,0,0,0,0,0,0,0,0,0,0,0,76.27,0,0,0],
+  Pamplona:[0,0,0,0,0,0,0,0,152.60,136.82,67.71,0,80.94,91.12,35.50,61.16],
+  Vitoria:[0,0,0,0,0,0,0,0,0,0,281.33,195.66,0,208.50,51.77,67.06],
+  Zaragoza:[0,0,0,0,0,0,0,0,0,0,107.02,143.12,0,16.42,0,0],
 };
 
+// DESVIACIONES — ahora por local por mes (export desde T-Spoon archivo individual). Cobertura mejorada.
 const DESVIACIONES = [
-  { mes: "Ago 25", monthKey: "2025-08", value: 6674.28,   by_local: { Bilbao: 4523.72, Burgos: 1266.33 }, locales: ["Bilbao","Burgos"] },
-  { mes: "Sep 25", monthKey: "2025-09", value: -1997.82,  by_local: { Pamplona: 5590.32, Zaragoza: 1996.67, Donosti: 1332.57, Burgos: -4384.23, Vitoria: -10686.36 }, locales: ["Burgos","Donosti","Pamplona","Vitoria","Zaragoza"] },
-  { mes: "Oct 25", monthKey: "2025-10", value: 19552.71,  by_local: { Pamplona: 8623.05, Zaragoza: 8418.15, Burgos: 6548.61, Vitoria: 2743.79 }, locales: ["Burgos","Pamplona","Vitoria","Zaragoza"] },
-  { mes: "Nov 25", monthKey: "2025-11", value: -74266.76, by_local: { Pamplona: 8831.74, Burgos: 2464.66, Zaragoza: 618.75, Vitoria: -79680.97 }, locales: ["Burgos","Pamplona","Vitoria","Zaragoza"] },
-  { mes: "Dic 25", monthKey: "2025-12", value: 126110.84, by_local: { Vitoria: 117731.27, Pamplona: 7022.10, Bilbao: 2415.92, Donosti: 1894.56, Burgos: 834.35 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria"] },
-  { mes: "Ene 26", monthKey: "2026-01", value: 5984.87,   by_local: { Pamplona: 6865.32, Vitoria: 6717.94, Donosti: 2129.05, Bilbao: 960.20, Burgos: -7189.83 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria"] },
-  { mes: "Feb 26", monthKey: "2026-02", value: 10006.14,  by_local: { Burgos: 8112.34, Donosti: 2417.97, Bilbao: 908.30, Pamplona: 825.75, Vitoria: -2288.48 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria"] },
-  { mes: "Mar 26", monthKey: "2026-03", value: -7706.29,  by_local: { Vitoria: 348.74, Donosti: -3981.82, Bilbao: -2537.82, Pamplona: -4222.66 }, locales: ["Bilbao","Donosti","Pamplona","Vitoria"] },
+  { mes: "Ago 25", monthKey: "2025-08", value: 7150.55,    by_local: { Bilbao: 5633.40, Burgos: 1517.15 }, locales: ["Bilbao","Burgos"] },
+  { mes: "Sep 25", monthKey: "2025-09", value: 14975.97,   by_local: { Bilbao: 10016.49, Pamplona: 7454.98, Zaragoza: 3955.40, Donosti: 2386.35, Burgos: -78.45, Vitoria: -8758.80 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria","Zaragoza"] },
+  { mes: "Oct 25", monthKey: "2025-10", value: 29249.69,   by_local: { Zaragoza: 10177.59, Pamplona: 9177.97, Burgos: 7316.21, Vitoria: 2577.92 }, locales: ["Burgos","Pamplona","Vitoria","Zaragoza"] },
+  { mes: "Nov 25", monthKey: "2025-11", value: -57712.49,  by_local: { Zaragoza: 10041.82, Pamplona: 9813.80, Burgos: 1862.86, Vitoria: -79430.97 }, locales: ["Burgos","Pamplona","Vitoria","Zaragoza"] },
+  { mes: "Dic 25", monthKey: "2025-12", value: 136969.05,  by_local: { Vitoria: 117355.69, Burgos: 10311.63, Pamplona: 5567.99, Bilbao: 2004.69, Donosti: 1729.05 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria"] },
+  { mes: "Ene 26", monthKey: "2026-01", value: 7602.98,    by_local: { Pamplona: 6355.23, Vitoria: 4668.70, Donosti: 1101.83, Bilbao: 833.30, Burgos: -5356.08 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria"] },
+  { mes: "Feb 26", monthKey: "2026-02", value: 11211.38,   by_local: { Burgos: 5688.65, Donosti: 2628.23, Bilbao: 1477.73, Pamplona: 1133.88, Vitoria: 282.89 }, locales: ["Bilbao","Burgos","Donosti","Pamplona","Vitoria"] },
+  { mes: "Mar 26", monthKey: "2026-03", value: -7706.30,   by_local: { Vitoria: -340.08, Donosti: -1738.07, Bilbao: -1896.54, Pamplona: -3731.61 }, locales: ["Bilbao","Donosti","Pamplona","Vitoria"] },
 ];
 
 const TOP_EMP_FACTURAS = [
@@ -134,14 +136,14 @@ const TOP_EMP_PROD_FACTURAR = [
 // Outlier detectado: 1 registro de 100.000€ el 29/08/2025 por ARIANNE en Pamplona ("Atención por 2 bellezones")
 const OUTLIER = { fecha: "29/08/2025", city: "Pamplona", employee: "ARIANNE", product: "Atención por 2 bellezones", value: 100000.00 };
 
-// Cobertura de mermas y desviaciones por local
+// Cobertura de mermas: meses con datos reales registrados por local (T-Spoon)
 const MERMAS_COVERAGE = {
-  Bilbao:   { hasta: "Abr 26", missing: [] },
-  Burgos:   { hasta: "Dic 25", missing: ["Ene 26","Feb 26","Mar 26","Abr 26"] },
-  Donosti:  { hasta: "Feb 26", missing: ["Mar 26","Abr 26"] },
-  Pamplona: { hasta: "Abr 26", missing: ["Feb 26"] },
-  Vitoria:  { hasta: "Abr 26", missing: [] },
-  Zaragoza: { hasta: "Dic 25", missing: ["Ene 26","Feb 26","Mar 26","Abr 26"] },
+  Bilbao:   { hasta: "Abr 26", missing: ["Nov 25"] },
+  Burgos:   { hasta: "Nov 25", missing: ["Ago 25","Sep 25","Oct 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"] },
+  Donosti:  { hasta: "Ene 26", missing: ["Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Feb 26","Mar 26","Abr 26"] },
+  Pamplona: { hasta: "Abr 26", missing: ["Ago 25","Dic 25"] },
+  Vitoria:  { hasta: "Abr 26", missing: ["Ago 25","Sep 25","Oct 25","Ene 26"] },
+  Zaragoza: { hasta: "Feb 26", missing: ["Ago 25","Sep 25","Oct 25","Ene 26","Mar 26","Abr 26"] },
 };
 
 // ============================================================
@@ -219,6 +221,60 @@ function aggregateByCity(monthlyDataObj, monthsKept, accessor = (v) => v) {
 // ============================================================
 //  UI COMPONENTS
 // ============================================================
+
+// Tooltip hover — para explicar términos a profesionales del sector restauración.
+// Reglas RockStar: máx ~80 caracteres, formato Acción + Definición, sin punto final.
+const Hover = ({ children, text, inline = false }) => {
+  const [open, setOpen] = useState(false);
+  const wrap = inline ? "inline-flex" : "inline-flex";
+  return (
+    <span
+      style={{ display: wrap, alignItems: "center", gap: 4, position: "relative", cursor: "help" }}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      {children}
+      <span
+        aria-label={text}
+        style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          width: 14, height: 14, borderRadius: 7,
+          background: RS.gold, color: RS.primaryDark,
+          fontSize: 9, fontWeight: 800, fontFamily: FONT,
+          lineHeight: 1, marginLeft: 2,
+        }}
+      >i</span>
+      {open && (
+        <span
+          style={{
+            position: "absolute", bottom: "calc(100% + 8px)", left: "50%",
+            transform: "translateX(-50%)",
+            background: RS.primaryDark, color: RS.white,
+            padding: "8px 12px", borderRadius: 6,
+            fontSize: 11, fontWeight: 500, fontFamily: FONT,
+            whiteSpace: "normal", width: 260, textAlign: "center",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.25)",
+            borderTop: `2px solid ${RS.gold}`,
+            zIndex: 1000, lineHeight: 1.4, pointerEvents: "none",
+          }}
+        >
+          {text}
+          <span
+            style={{
+              position: "absolute", top: "100%", left: "50%",
+              transform: "translateX(-50%)",
+              width: 0, height: 0,
+              borderLeft: "6px solid transparent",
+              borderRight: "6px solid transparent",
+              borderTop: `6px solid ${RS.primaryDark}`,
+            }}
+          />
+        </span>
+      )}
+    </span>
+  );
+};
+
 const Card = ({ children, style = {}, className = "" }) => (
   <div
     className={className}
@@ -235,9 +291,11 @@ const Card = ({ children, style = {}, className = "" }) => (
   </div>
 );
 
-const KPI = ({ label, value, sub, color = RS.text, accent }) => (
+const KPI = ({ label, value, sub, color = RS.text, accent, tooltip }) => (
   <div style={{ textAlign: "center" }}>
-    <div style={{ fontSize: 11, color: RS.textLight, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4, fontWeight: 600 }}>{label}</div>
+    <div style={{ fontSize: 11, color: RS.textLight, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4, fontWeight: 600, display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {tooltip ? <Hover text={tooltip}><span>{label}</span></Hover> : label}
+    </div>
     <div style={{ fontSize: 26, fontWeight: 800, color }}>{value}</div>
     {sub && <div style={{ fontSize: 11, color: RS.textLight, marginTop: 4 }}>{sub}</div>}
     {accent && <div style={{ marginTop: 6 }}>{accent}</div>}
@@ -257,11 +315,13 @@ const Badge = ({ children, color = RS.primary, bg }) => (
   }}>{children}</span>
 );
 
-const SectionTitle = ({ icon, title, subtitle }) => (
+const SectionTitle = ({ icon, title, subtitle, tooltip }) => (
   <div style={{ marginBottom: 18, marginTop: 24 }}>
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <span style={{ fontSize: 24 }}>{icon}</span>
-      <h2 style={{ fontSize: 20, fontWeight: 800, color: RS.primary, margin: 0, fontFamily: FONT }}>{title}</h2>
+      <h2 style={{ fontSize: 20, fontWeight: 800, color: RS.primary, margin: 0, fontFamily: FONT, display: "flex", alignItems: "center" }}>
+        {tooltip ? <Hover text={tooltip}><span>{title}</span></Hover> : title}
+      </h2>
     </div>
     {subtitle && <p style={{ fontSize: 13, color: RS.textLight, margin: "6px 0 0 36px", fontFamily: FONT }}>{subtitle}</p>}
   </div>
@@ -286,8 +346,12 @@ const Alert = ({ type = "info", children }) => {
       fontSize: 13,
       color: s.txt,
       fontFamily: FONT,
+      display: "flex",
+      alignItems: "flex-start",
+      gap: 8,
     }}>
-      <span style={{ marginRight: 8 }}>{icons[type]}</span>{children}
+      <span style={{ flexShrink: 0, lineHeight: 1.4 }}>{icons[type]}</span>
+      <div style={{ flex: 1, minWidth: 0 }}>{children}</div>
     </div>
   );
 };
@@ -399,16 +463,21 @@ const Section1_Resumen = ({ months }) => {
       <div style={{ textAlign: "center", marginBottom: 24 }}>
         <h1 style={{ fontSize: 28, fontWeight: 900, color: RS.primary, margin: 0, fontFamily: FONT, letterSpacing: 0.5 }}>RESUMEN EJECUTIVO</h1>
         <p style={{ fontSize: 13, color: RS.textLight, marginTop: 6, fontFamily: FONT }}>
-          Análisis de los tres vectores principales de posible fraude: descuadres de caja, anulaciones (facturas/productos) y desviaciones de inventario.
+          Análisis de los tres vectores principales de posible fraude: descuadres de caja, anulaciones (facturas-tickets / productos) y desviaciones de inventario.
         </p>
       </div>
 
       <Card>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20 }}>
-          <KPI label="Descuadre de caja (neto)" value={fmt(cajaTotal)} color={RS.red} sub={`6 locales · ${months.length} mes(es)`} />
-          <KPI label="Facturas eliminadas" value={fmt(factTotal)} color={RS.orange} sub={`${factCount} facturas`} />
-          <KPI label="Productos elim. tras facturar" value={fmt(prodFactTotal)} color={RS.red} sub="Indicador crítico" />
-          <KPI label="Mermas registradas" value={fmt(mermaTotal)} color={RS.green} sub="Periodo seleccionado" accent={<Badge color={RS.orange}>{fmtPct(pctMerma, 3)} sobre ventas</Badge>} />
+          <KPI label="Descuadre de caja (neto)" value={fmt(cajaTotal)} color={RS.red} sub={`6 locales · ${months.length} mes(es)`}
+            tooltip="Suma de faltas y sobras al cuadrar caja vs. lo esperado por TPV" />
+          <KPI label="Facturas-Tickets eliminados" value={fmt(factTotal)} color={RS.orange} sub={`${factCount} tickets`}
+            tooltip="Tickets emitidos en TPV y posteriormente anulados del sistema" />
+          <KPI label="Productos elim. tras facturar" value={fmt(prodFactTotal)} color={RS.red} sub="Indicador crítico"
+            tooltip="Productos ya cobrados al cliente y borrados después del sistema" />
+          <KPI label="Mermas registradas" value={fmt(mermaTotal)} color={RS.green} sub="Periodo seleccionado"
+            tooltip="Coste de producto desechado o caducado registrado en T-Spoon"
+            accent={<Badge color={RS.orange}>{fmtPct(pctMerma, 3)} sobre ventas</Badge>} />
         </div>
       </Card>
 
@@ -417,7 +486,7 @@ const Section1_Resumen = ({ months }) => {
           <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>Vectores analizados</h3>
           <div style={{ fontSize: 13, color: RS.text, lineHeight: 1.6, fontFamily: FONT }}>
             <p style={{ margin: "8px 0" }}><strong style={{ color: RS.primary }}>1. Descuadres de caja:</strong> diferencia entre efectivo esperado por TPV y efectivo real contado.</p>
-            <p style={{ margin: "8px 0" }}><strong style={{ color: RS.primary }}>2. Anulaciones:</strong> facturas eliminadas tras emitirse y productos eliminados de comandas (antes/después de cocina, después de facturar).</p>
+            <p style={{ margin: "8px 0" }}><strong style={{ color: RS.primary }}>2. Anulaciones:</strong> facturas-tickets eliminados tras emitirse y productos eliminados de comandas (antes/después de cocina, después de facturar).</p>
             <p style={{ margin: "8px 0" }}><strong style={{ color: RS.primary }}>3. Desviaciones de inventario:</strong> diferencia entre consumo teórico (escandallos × ventas) y consumo real (stock), por almacén y mes.</p>
           </div>
         </Card>
@@ -425,7 +494,7 @@ const Section1_Resumen = ({ months }) => {
         <Card>
           <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>Cobertura del periodo</h3>
           <div style={{ fontSize: 12, color: RS.text, fontFamily: FONT, lineHeight: 1.7 }}>
-            <p style={{ margin: 0 }}>· <strong>Caja, facturas y productos:</strong> cobertura completa para los 6 locales (Last.app).</p>
+            <p style={{ margin: 0 }}>· <strong>Caja, facturas-tickets y productos:</strong> cobertura completa para los 6 locales (Last.app).</p>
             <p style={{ margin: "6px 0 0 0" }}>· <strong>Mermas (T-Spoon):</strong> cobertura desigual — Bilbao, Pamplona y Vitoria llegan a Abril; Donosti hasta Feb; Burgos y Zaragoza solo agregado 2025.</p>
             <p style={{ margin: "6px 0 0 0" }}>· <strong>Desviaciones de almacén:</strong> registros mensuales Ago25—Mar26 con cobertura variable de locales por mes. No se entrega archivo de Abril 26.</p>
             <p style={{ margin: "6px 0 0 0", color: RS.textLight, fontStyle: "italic" }}>Donde no hay dato es porque el cliente no lo ha registrado en el sistema en el periodo correspondiente.</p>
@@ -434,7 +503,11 @@ const Section1_Resumen = ({ months }) => {
       </div>
 
       <Alert type="danger">
-        <strong>Hallazgos críticos del periodo completo:</strong> (1) Donosti acumula -25.595 € de descuadre concentrado en Feb—Ago 2025; (2) Pamplona concentra el 75 % de las facturas eliminadas (337 de 449), con ARIANNE acumulando 198 facturas (13.396 €); (3) Detectado un registro de 100.000 € en productos eliminados tras facturar en Pamplona el 29/08/2025 (ARIANNE) — probable error de captura, distorsiona el indicador.
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6, gap: 8, flexWrap: "wrap" }}>
+          <strong>Hallazgos críticos — periodo completo</strong>
+          <Badge color={RS.purpleSoft}>No se actualiza con el filtro</Badge>
+        </div>
+        (1) Donosti acumula -25.595 € de descuadre concentrado en Feb—Ago 2025; (2) Pamplona concentra el 75 % de las facturas-tickets eliminados (337 de 449), con ARIANNE acumulando 198 (13.396 €); (3) Detectado un registro de 100.000 € en productos eliminados tras facturar en Pamplona el 29/08/2025 (ARIANNE) — registro NO REAL (probable broma del equipo o prueba), distorsiona el indicador.
       </Alert>
     </div>
   );
@@ -575,7 +648,7 @@ const Section2_Caja = ({ months, period }) => {
 };
 
 // ============================================================
-//  SECTION 3: FACTURAS ELIMINADAS
+//  SECTION 3: FACTURAS-TICKETS ELIMINADOS
 // ============================================================
 const Section3_Facturas = ({ months }) => {
   const totalsPerCity = useMemo(() => {
@@ -601,7 +674,7 @@ const Section3_Facturas = ({ months }) => {
 
   return (
     <div>
-      <SectionTitle icon="🧾" title="Facturas eliminadas" subtitle={`Facturas anuladas tras ser generadas — ${months.length} mes(es) en el filtro`} />
+      <SectionTitle icon="🧾" title="Facturas-Tickets eliminados" subtitle={`Tickets emitidos en TPV y posteriormente anulados — ${months.length} mes(es) en el filtro`} />
 
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
         <Card>
@@ -622,12 +695,15 @@ const Section3_Facturas = ({ months }) => {
             </ResponsiveContainer>
           </div>
           <div style={{ marginTop: 8, fontSize: 11, color: RS.textLight, textAlign: "center", fontFamily: FONT }}>
-            Total: {totalCount} facturas · {fmt(totalValue)}
+            Total: {fmtInt(totalCount)} facturas-tickets · {fmt(totalValue)}
           </div>
         </Card>
 
         <Card>
-          <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>Top empleados — periodo completo</h3>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
+            <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: 0, fontFamily: FONT }}>Top empleados</h3>
+            <Badge color={RS.purpleSoft}>Periodo completo · no se actualiza con el filtro</Badge>
+          </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6, fontFamily: FONT }}>
             {TOP_EMP_FACTURAS.map((e, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -647,7 +723,7 @@ const Section3_Facturas = ({ months }) => {
                 </div>
                 <div style={{ textAlign: "right", minWidth: 90 }}>
                   <div style={{ fontSize: 13, fontWeight: 700, color: RS.text }}>{fmt(e.value)}</div>
-                  <div style={{ fontSize: 10, color: RS.textLight }}>{e.count} facturas</div>
+                  <div style={{ fontSize: 10, color: RS.textLight }}>{e.count} tickets</div>
                 </div>
               </div>
             ))}
@@ -656,7 +732,7 @@ const Section3_Facturas = ({ months }) => {
       </div>
 
       <Alert type="danger">
-        <strong>Pamplona concentra el {fmtPct(pctPamp, 1)}</strong> de todas las facturas eliminadas del periodo seleccionado. ARIANNE acumula 198 facturas eliminadas por valor de 13.396 € en el periodo completo (Ene 25 — Abr 26). UNAX la sigue con 85 facturas (5.296 €). Esta concentración en un solo local y dos personas es anómala y requiere investigación interna.
+        <strong>Pamplona concentra el {fmtPct(pctPamp, 1)}</strong> de todas las facturas-tickets eliminados del periodo seleccionado. <span style={{ color: RS.purpleSoft, fontStyle: "italic" }}>(Datos del top empleados que siguen son del periodo completo)</span>: ARIANNE acumula 198 tickets eliminados por valor de 13.396 € en el periodo completo (Ene 25 — Abr 26). UNAX la sigue con 85 (5.296 €). Esta concentración en un solo local y dos personas es anómala y requiere investigación interna.
       </Alert>
     </div>
   );
@@ -707,17 +783,29 @@ const Section4_Productos = ({ months }) => {
       <Card>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 18 }}>
           <div style={{ background: RS.lavender, padding: 14, borderRadius: 10, textAlign: "center" }}>
-            <div style={{ fontSize: 11, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>ANTES DE COCINA</div>
+            <div style={{ fontSize: 11, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Hover text="Producto eliminado de la comanda antes de enviarlo a cocina">
+                <span>ANTES DE COCINA</span>
+              </Hover>
+            </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: RS.primary, fontFamily: FONT }}>{fmtInt(cAntes)}</div>
             <div style={{ fontSize: 11, color: RS.textLight, fontFamily: FONT }}>{fmt(sumAntes)}</div>
           </div>
           <div style={{ background: "#FFF3E0", padding: 14, borderRadius: 10, textAlign: "center" }}>
-            <div style={{ fontSize: 11, color: RS.orange, fontWeight: 700, fontFamily: FONT }}>DESPUÉS DE COCINA</div>
+            <div style={{ fontSize: 11, color: RS.orange, fontWeight: 700, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Hover text="Producto ya elaborado por cocina y eliminado antes de facturar">
+                <span>DESPUÉS DE COCINA</span>
+              </Hover>
+            </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: "#E65100", fontFamily: FONT }}>{fmtInt(cCocina)}</div>
             <div style={{ fontSize: 11, color: RS.textLight, fontFamily: FONT }}>{fmt(sumCocina)}</div>
           </div>
           <div style={{ background: "#FFEBEE", padding: 14, borderRadius: 10, textAlign: "center", border: `1px solid ${RS.red}33` }}>
-            <div style={{ fontSize: 11, color: RS.red, fontWeight: 700, fontFamily: FONT }}>DESPUÉS DE FACTURAR ⚠</div>
+            <div style={{ fontSize: 11, color: RS.red, fontWeight: 700, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Hover text="Producto cobrado al cliente y borrado del sistema tras la venta">
+                <span>DESPUÉS DE FACTURAR ⚠</span>
+              </Hover>
+            </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: "#7A0000", fontFamily: FONT }}>{fmtInt(cFacturar)}</div>
             <div style={{ fontSize: 11, color: RS.textLight, fontFamily: FONT }}>{fmt(sumFacturar)}</div>
           </div>
@@ -749,10 +837,17 @@ const Section4_Productos = ({ months }) => {
         Los <strong>productos eliminados después de facturar</strong> son los más críticos: el producto ya se preparó, se sirvió y se facturó, pero luego se eliminó del sistema. Esto puede indicar que se cobró al cliente (en efectivo) y después se borró la venta para quedarse con el dinero. Excluyendo el outlier de Pamplona, los locales con mayor volumen de este indicador en el periodo completo son <strong>Zaragoza ({fmt(SUMMARY.Zaragoza.prod_facturar_value)})</strong> y <strong>Donosti ({fmt(SUMMARY.Donosti.prod_facturar_value)})</strong>.
       </Alert>
 
+      <Alert type="info">
+        <strong>Nota sobre la trazabilidad del dato — discrepancia detectada en Last.app:</strong> durante el QA hemos cruzado el sumatorio del detalle de productos eliminados después de cocina con el campo "totales" que el propio Last.app expone, y aparecen pequeñas diferencias. Ejemplo concreto: en <strong>Donosti, marzo 2026</strong>, el sumatorio del detalle de productos eliminados después de cocina arroja <strong>459,00 €</strong>, mientras que el total que registra Last.app para ese mismo concepto y mes es <strong>464,65 €</strong> (diferencia de 5,65 €). Esto <strong>no es un error de cálculo del dashboard</strong> — el dashboard suma correctamente lo que entrega el detalle del export. La discrepancia viene del propio Last.app entre su tabla de detalle y su tabla agregada, y debe ser revisada y corregida en origen por el cliente. Lo dejamos documentado por transparencia en el QA y para que el cliente pueda abrir ticket con Last.app.
+      </Alert>
+
       <Card style={{ marginTop: 16 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>
-          Top empleados — productos eliminados después de facturar (periodo completo)
-        </h3>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: 0, fontFamily: FONT }}>
+            Top empleados — productos eliminados después de facturar
+          </h3>
+          <Badge color={RS.purpleSoft}>Periodo completo · no se actualiza con el filtro</Badge>
+        </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6, fontFamily: FONT }}>
           {TOP_EMP_PROD_FACTURAR.slice(0, 8).map((e, i) => {
             const isOutlier = e.name === "ARIANNE";
@@ -818,14 +913,28 @@ const Section5_Mermas = ({ months }) => {
             <div style={{ fontSize: 10, color: RS.textLight, fontFamily: FONT }}>Periodo seleccionado</div>
           </div>
           <div style={{ background: RS.lavender, padding: 12, borderRadius: 10, textAlign: "center" }}>
-            <div style={{ fontSize: 11, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>VENTAS (TAXABLE BASE)</div>
+            <div style={{ fontSize: 11, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Hover text="Ingresos sin IVA, tras descuentos, en el periodo seleccionado">
+                <span>VENTA NETA (TAXABLE BASE)</span>
+              </Hover>
+            </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: RS.primary, fontFamily: FONT }}>{fmt(totalVentas)}</div>
             <div style={{ fontSize: 10, color: RS.textLight, fontFamily: FONT }}>Cumulativo Ene 25 — Abr 26 (no filtrable)</div>
           </div>
           <div style={{ background: "#FFEBEE", padding: 12, borderRadius: 10, textAlign: "center" }}>
-            <div style={{ fontSize: 11, color: RS.red, fontWeight: 700, fontFamily: FONT }}>% MERMA / VENTAS</div>
+            <div style={{ fontSize: 11, color: RS.red, fontWeight: 700, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Hover text="Mermas registradas / Venta neta. Esperado quinta gama: 0,5 % — 2 %">
+                <span>% MERMA / VENTAS</span>
+              </Hover>
+            </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: "#7A0000", fontFamily: FONT }}>{fmtPct(pctGlobal, 3)}</div>
-            <div style={{ fontSize: 10, color: RS.textLight, fontFamily: FONT }}>Esperado quinta gama: 0,5 % — 2 %</div>
+            <div style={{ fontSize: 10, color: RS.textLight, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center", gap: 4 }}>
+              <span>Esperado</span>
+              <Hover text="Cocina con producto industrial precocinado, listo para regenerar">
+                <span style={{ textDecoration: "underline dotted" }}>quinta gama</span>
+              </Hover>
+              <span>: 0,5 % — 2 %</span>
+            </div>
           </div>
         </div>
       </Card>
@@ -895,7 +1004,7 @@ const Section5_Mermas = ({ months }) => {
               </div>
             </div>
             <p style={{ fontSize: 12, color: RS.text, marginTop: 8, lineHeight: 1.5 }}>
-              El registro de mermas sigue siendo <strong>insuficiente</strong> (esperado 0,5 % — 2 %). Bilbao, Pamplona y Vitoria registran mensualmente; <strong>Burgos y Zaragoza</strong> no han registrado mermas en 2026, lo que sugiere que no es problema operativo sino de captura en T-Spoon. <strong>Donosti</strong> dejó de registrar en marzo 2026.
+              El registro de mermas sigue siendo <strong>insuficiente</strong> (esperado 0,5 % — 2 %). <strong>Bilbao y Pamplona</strong> son los únicos con registro mensual completo en 2026 (Ene—Abr). <strong>Vitoria</strong> registra desde Feb 26 (sin datos de Ene). <strong>Donosti</strong> solo ha registrado Ene 26 y desde entonces no aparecen registros. <strong>Burgos</strong> solo registró Nov 25, no aparece en 2026. <strong>Zaragoza</strong> registró Nov—Dic 25 y solo Feb 26. La cobertura es desigual e insuficiente para sacar conclusiones operativas robustas.
             </p>
           </div>
         </Card>
@@ -913,7 +1022,8 @@ const Section6_Inventario = ({ months }) => {
 
   return (
     <div>
-      <SectionTitle icon="📦" title="Desviaciones de almacén" subtitle="Diferencia entre consumo teórico y real de inventario — T-Spoon Lab · No hay archivo de Abril 26" />
+      <SectionTitle icon="📦" title="Desviaciones de almacén" subtitle="Diferencia entre consumo teórico y real de inventario — T-Spoon Lab · No hay archivo de Abril 26"
+        tooltip="Consumo teórico (escandallos × ventas) menos consumo real de stock" />
 
       <Card>
         <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.max(1, desvFiltered.length)}, 1fr)`, gap: 8, marginBottom: 16 }}>
@@ -966,7 +1076,7 @@ const Section6_Inventario = ({ months }) => {
         </Alert>
 
         <Alert type="info">
-          Las desviaciones presentan variaciones extremas (de -74.266 € hasta +126.110 €). Análisis detallado producto a producto realizado anteriormente revela que se deben mayoritariamente a <strong>errores de registro de inventario</strong>: cantidades en formato numérico incorrecto, confusiones de unidades de medida (g/kg) y escandallos mal configurados. Ejemplo: Panceta Arrotalota en Vitoria (Diciembre 25) genera 110.537 € de desviación (87,7 % del total del mes) por error de cantidad inicial (5.672 Kg en vez de 5,672 Kg). <strong>No es fraude — es problema de captura.</strong>
+          Las desviaciones presentan variaciones extremas (de -57.712 € hasta +136.969 €). Análisis detallado producto a producto realizado anteriormente revela que se deben mayoritariamente a <strong>errores de registro de inventario</strong>: cantidades en formato numérico incorrecto, confusiones de unidades de medida (g/kg) y escandallos mal configurados. Caso documentado: Panceta Arrotalota en Vitoria (Dic 25) genera ~117.355 € de desviación (86 % del total del mes) por error de cantidad inicial (5.672 Kg en vez de 5,672 Kg). <strong>No es fraude — es problema de captura.</strong>
         </Alert>
       </Card>
     </div>
@@ -976,27 +1086,43 @@ const Section6_Inventario = ({ months }) => {
 // ============================================================
 //  SECTION 7: CORRELACIÓN
 // ============================================================
-const Section7_Correlacion = () => {
-  const data = CITIES.map(c => ({
-    x: SUMMARY[c].fact_value,
-    y: Math.abs(SUMMARY[c].caja_neto),
-    city: c, z: 100,
-  }));
+const Section7_Correlacion = ({ months }) => {
+  // Recalcula los totales por ciudad usando solo los meses del filtro
+  const data = useMemo(() => CITIES.map(c => {
+    let cajaNeto = 0;
+    let factValue = 0;
+    months.forEach(m => {
+      const idx = ALL_MONTHS.indexOf(m);
+      cajaNeto += CAJA_MONTHLY[c][idx] || 0;
+      factValue += FACT_MONTHLY[c][idx]?.[1] || 0;
+    });
+    return {
+      x: factValue,
+      y: Math.abs(cajaNeto),
+      cajaNeto,
+      city: c, z: 100,
+    };
+  }), [months]);
+
+  const periodoLabel = months.length === 16 ? "Periodo completo (Ene 25 — Abr 26)"
+    : months.length === 12 ? "Año completo seleccionado"
+    : months.length === 4 ? "YTD del año seleccionado"
+    : `${months.length} mes(es) seleccionados`;
 
   return (
     <div>
-      <SectionTitle icon="🔗" title="Análisis de correlación" subtitle="¿Se relacionan las anulaciones con el dinero que falta? · Datos cumulativos Ene 25 — Abr 26" />
+      <SectionTitle icon="🔗" title="Análisis de correlación" subtitle={`¿Se relacionan las anulaciones con el dinero que falta? · ${periodoLabel}`} />
 
       <Card>
         <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>
-          Facturas eliminadas (€) vs. Descuadre de caja (€) por local
+          Facturas-Tickets eliminados (€) vs. Descuadre de caja (€) por local
         </h3>
         <div style={{ height: 280 }}>
           <ResponsiveContainer>
             <ScatterChart>
               <CartesianGrid strokeDasharray="3 3" stroke={RS.lavenderMid} />
-              <XAxis type="number" dataKey="x" name="Facturas eliminadas" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort}
-                label={{ value: "Facturas eliminadas (€)", position: "insideBottom", offset: -8, fontSize: 11, fontFamily: FONT, fill: RS.text }} />
+              <XAxis type="number" dataKey="x" name="Facturas-Tickets eliminados" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort}
+                label={{ value: "Facturas-Tickets eliminados (€)", position: "insideBottom", offset: -8, fontSize: 11, fontFamily: FONT, fill: RS.text }} />
               <YAxis type="number" dataKey="y" name="Descuadre caja" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort}
                 label={{ value: "|Descuadre caja| (€)", angle: -90, position: "insideLeft", fontSize: 11, fontFamily: FONT, fill: RS.text }} />
               <ZAxis type="number" dataKey="z" range={[200, 500]} />
@@ -1006,7 +1132,7 @@ const Section7_Correlacion = () => {
                 return (
                   <div style={{ background: RS.white, border: `1px solid ${RS.purpleSoft}`, borderRadius: 8, padding: 10, fontSize: 12, fontFamily: FONT }}>
                     <div style={{ fontWeight: 800, color: RS.primary }}>{d.city}</div>
-                    <div style={{ color: RS.text }}>Facturas eliminadas: {fmt(d.x)}</div>
+                    <div style={{ color: RS.text }}>Facturas-Tickets eliminados: {fmt(d.x)}</div>
                     <div style={{ color: RS.text }}>|Descuadre caja|: {fmt(d.y)}</div>
                   </div>
                 );
@@ -1028,21 +1154,24 @@ const Section7_Correlacion = () => {
       </Card>
 
       <Card style={{ marginTop: 16 }}>
-        <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>Interpretación</h3>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: 0, fontFamily: FONT }}>Interpretación</h3>
+          <Badge color={RS.purpleSoft}>Análisis del periodo completo · no se actualiza con el filtro</Badge>
+        </div>
         <p style={{ fontSize: 13, color: RS.text, lineHeight: 1.6, fontFamily: FONT }}>
-          A nivel global <strong>no existe una correlación fuerte y consistente</strong> entre el volumen de facturas/productos eliminados y los descuadres de caja. Sin embargo, hay patrones claramente diferenciados por local:
+          A nivel global <strong>no existe una correlación fuerte y consistente</strong> entre el volumen de facturas-tickets / productos eliminados y los descuadres de caja. Sin embargo, hay patrones claramente diferenciados por local:
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginTop: 10, fontFamily: FONT }}>
           <div style={{ background: "#FFEBEE", padding: 12, borderRadius: 8, border: `1px solid ${RS.red}33` }}>
             <div style={{ fontWeight: 800, color: RS.red, fontSize: 13 }}>🔴 Donosti — Patrón resuelto</div>
             <p style={{ fontSize: 12, color: "#7A0000", marginTop: 4, lineHeight: 1.5 }}>
-              Descuadre acumulado de -25.595 € con relativamente pocas anulaciones (24 facturas). El problema se concentró Feb—Ago 2025 y desde entonces el descuadre se ha revertido a positivo (+2.614 € desde Sep 25). Sugiere que algo cambió.
+              Descuadre acumulado de -25.595 € con relativamente pocas anulaciones (24 facturas-tickets). El problema se concentró Feb—Ago 2025 y desde entonces el descuadre se ha revertido a positivo (+2.614 € desde Sep 25). Sugiere que algo cambió.
             </p>
           </div>
           <div style={{ background: "#FFF3E0", padding: 12, borderRadius: 8, border: `1px solid ${RS.orange}33` }}>
             <div style={{ fontWeight: 800, color: RS.orange, fontSize: 13 }}>🟠 Pamplona — Patrón persistente</div>
             <p style={{ fontSize: 12, color: "#E65100", marginTop: 4, lineHeight: 1.5 }}>
-              337 facturas eliminadas (20.896 €) + descuadre de caja -12.501 €. ARIANNE acumula 198 facturas eliminadas (13.396 €). El volumen sigue activo y vinculado al faltante de caja.
+              337 facturas-tickets eliminados (20.896 €) + descuadre de caja -12.501 €. ARIANNE acumula 198 (13.396 €). El volumen sigue activo y vinculado al faltante de caja.
             </p>
           </div>
           <div style={{ background: "#FFF8E1", padding: 12, borderRadius: 8, border: `1px solid ${RS.gold}66` }}>
@@ -1070,19 +1199,23 @@ const Section8_Conclusiones = () => (
   <div>
     <SectionTitle icon="📋" title="Diagnóstico y conclusiones" subtitle="Periodo completo Ene 25 — Abr 26" />
 
+    <div style={{ marginBottom: 16, display: "flex", justifyContent: "flex-end" }}>
+      <Badge color={RS.purpleSoft}>Análisis del periodo completo · no se actualiza con el filtro</Badge>
+    </div>
+
     <Card>
       <div style={{ display: "flex", flexDirection: "column", gap: 12, fontFamily: FONT }}>
         <div style={{ background: RS.lavender, padding: 14, borderRadius: 8 }}>
           <h3 style={{ fontSize: 14, fontWeight: 800, color: RS.primary, margin: "0 0 6px 0" }}>1. Desviaciones de almacén — Problema de registros, no fraude</h3>
           <p style={{ fontSize: 13, color: RS.text, margin: 0, lineHeight: 1.5 }}>
-            Las desviaciones oscilan entre -74.266 € (Nov 25) y +126.110 € (Dic 25) y se deben mayoritariamente a errores de introducción de datos en T-Spoon Lab (unidades de medida incorrectas, cantidades con formato erróneo, escandallos mal configurados). La cobertura de locales varía por mes, por lo que los totales no son comparables. <strong>No hay archivo de Abril 26.</strong>
+            Las desviaciones oscilan entre -57.712 € (Nov 25) y +136.969 € (Dic 25) y se deben mayoritariamente a errores de introducción de datos en T-Spoon Lab (unidades de medida incorrectas, cantidades con formato erróneo, escandallos mal configurados). Tras la nueva extracción por local—mes la cobertura mejora pero sigue siendo desigual (no todos los locales tienen archivo cada mes). <strong>No hay archivo de Abril 26.</strong>
           </p>
         </div>
 
         <div style={{ background: RS.lavender, padding: 14, borderRadius: 8 }}>
           <h3 style={{ fontSize: 14, fontWeight: 800, color: RS.primary, margin: "0 0 6px 0" }}>2. Mermas — Mejora parcial, aún insuficiente</h3>
           <p style={{ fontSize: 13, color: RS.text, margin: 0, lineHeight: 1.5 }}>
-            Mermas totales registradas: <strong>2.997,49 €</strong> (Ene 25 — Abr 26) frente a 2.628.406 € de ventas (taxable base) — <strong>0,114 % sobre ventas</strong>, muy por debajo del 0,5 % — 2 % esperado en quinta gama. Bilbao, Pamplona y Vitoria muestran mejora; <strong>Burgos y Zaragoza no han registrado mermas en 2026</strong> (probable problema de captura, no operativo). Donosti dejó de registrar en marzo 26.
+            Mermas totales registradas: <strong>2.687,29 €</strong> (Ene 25 — Abr 26) frente a 2.628.406 € de ventas (taxable base) — <strong>0,102 % sobre ventas</strong>, muy por debajo del 0,5 % — 2 % esperado en quinta gama. Bilbao y Pamplona son los únicos con registro mensual completo en 2026; Vitoria registra desde Feb 26 sin enero. <strong>Donosti, Burgos y Zaragoza tienen cobertura mínima</strong> (probable problema de captura, no operativo). La cobertura mejorada con la nueva extracción por archivo individual revela que el problema de registro es estructural, no puntual.
           </p>
         </div>
 
@@ -1096,7 +1229,7 @@ const Section8_Conclusiones = () => (
         <div style={{ background: "#FFF3E0", padding: 14, borderRadius: 8, border: `1px solid ${RS.orange}33` }}>
           <h3 style={{ fontSize: 14, fontWeight: 800, color: RS.orange, margin: "0 0 6px 0" }}>4. Anulaciones — Anomalía persistente en Pamplona</h3>
           <p style={{ fontSize: 13, color: "#E65100", margin: 0, lineHeight: 1.5 }}>
-            Pamplona concentra el <strong>75 %</strong> de las facturas eliminadas (337 de 449). ARIANNE acumula 198 facturas (13.396 €) y UNAX 85 (5.296 €). En productos eliminados después de facturar, ARIANNE acumula 321 productos por valor de 4.420 € (excluido el registro no real de 100.000 € — ver punto 5). El patrón no solo persiste sino que se intensifica.
+            Pamplona concentra el <strong>75 %</strong> de las facturas-tickets eliminados (337 de 449). ARIANNE acumula 198 (13.396 €) y UNAX 85 (5.296 €). En productos eliminados después de facturar, ARIANNE acumula 321 productos por valor de 4.420 € (excluido el registro no real de 100.000 € — ver punto 5). El patrón no solo persiste sino que se intensifica.
           </p>
         </div>
 
@@ -1116,7 +1249,7 @@ const Section8_Conclusiones = () => (
         <div>
           <h3 style={{ fontSize: 13, fontWeight: 800, color: RS.primary, borderBottom: `2px solid ${RS.gold}`, paddingBottom: 6 }}>Acciones inmediatas</h3>
           <div style={{ fontSize: 13, color: RS.text, lineHeight: 1.6, marginTop: 8 }}>
-            <p style={{ margin: "6px 0" }}>· <strong>Pamplona:</strong> Auditar las 337 facturas eliminadas. Restringir permisos de anulación de ARIANNE y UNAX a aprobación de encargado. Exigir motivo documentado.</p>
+            <p style={{ margin: "6px 0" }}>· <strong>Pamplona:</strong> Auditar las 337 facturas-tickets eliminados. Restringir permisos de anulación de ARIANNE y UNAX a aprobación de encargado. Exigir motivo documentado.</p>
             <p style={{ margin: "6px 0" }}>· <strong>Pamplona — Registro no real de 100k:</strong> Pedir al equipo del local que lo elimine en Last.app (es una broma/prueba interna), para que no siga distorsionando los reportes futuros.</p>
             <p style={{ margin: "6px 0" }}>· <strong>Donosti:</strong> Documentar qué cambió en Sep 25 que detuvo el descuadre. Replicar el control en otros locales.</p>
             <p style={{ margin: "6px 0" }}>· <strong>Vitoria:</strong> Investigar el pico de Ene 26 (-2.057 €). Verificar cambio de personal o procedimiento.</p>
@@ -1128,7 +1261,7 @@ const Section8_Conclusiones = () => (
           <div style={{ fontSize: 13, color: RS.text, lineHeight: 1.6, marginTop: 8 }}>
             <p style={{ margin: "6px 0" }}>· Corregir escandallos y protocolo de inventarios en T-Spoon Lab (doble verificación, control de coherencia mensual).</p>
             <p style={{ margin: "6px 0" }}>· <strong>Burgos y Zaragoza:</strong> arrancar registro de mermas en T-Spoon — la cifra de 0 € no es realista.</p>
-            <p style={{ margin: "6px 0" }}>· Limitar permisos de eliminación de facturas y productos a encargados, con motivo documentado obligatorio.</p>
+            <p style={{ margin: "6px 0" }}>· Limitar permisos de eliminación de facturas-tickets y productos a encargados, con motivo documentado obligatorio.</p>
             <p style={{ margin: "6px 0" }}>· Monitorizar mensualmente: ratio anulaciones por empleado, descuadre por turno, mermas registradas vs. objetivo 0,5 %.</p>
             <p style={{ margin: "6px 0" }}>· <strong>Auditoría:</strong> entregar al CFO el Excel auditable con todos los cálculos y trazabilidad al dato origen para validación independiente.</p>
           </div>
@@ -1147,14 +1280,14 @@ export default function Report() {
   const months = useMemo(() => monthsInPeriod(period), [period]);
 
   const sections = [
-    { label: "Resumen",      component: <Section1_Resumen months={months} /> },
-    { label: "Caja",         component: <Section2_Caja months={months} period={period} /> },
-    { label: "Facturas",     component: <Section3_Facturas months={months} /> },
-    { label: "Productos",    component: <Section4_Productos months={months} /> },
-    { label: "Mermas",       component: <Section5_Mermas months={months} /> },
-    { label: "Inventario",   component: <Section6_Inventario months={months} /> },
-    { label: "Correlación",  component: <Section7_Correlacion /> },
-    { label: "Conclusiones", component: <Section8_Conclusiones /> },
+    { label: "Resumen",          component: <Section1_Resumen months={months} /> },
+    { label: "Caja",             component: <Section2_Caja months={months} period={period} /> },
+    { label: "Facturas-Tickets", component: <Section3_Facturas months={months} /> },
+    { label: "Productos",        component: <Section4_Productos months={months} /> },
+    { label: "Mermas",           component: <Section5_Mermas months={months} /> },
+    { label: "Inventario",       component: <Section6_Inventario months={months} /> },
+    { label: "Correlación",      component: <Section7_Correlacion months={months} /> },
+    { label: "Conclusiones",     component: <Section8_Conclusiones /> },
   ];
 
   return (
