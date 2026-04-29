@@ -86,6 +86,17 @@ const PROD_MONTHLY = {
 };
 
 // Índice 0..15 = Ene25, Feb25, Mar25, Abr25, May25, Jun25, Jul25, Ago25, Sep25, Oct25, Nov25, Dic25, Ene26, Feb26, Mar26, Abr26
+
+// Ventas (Taxable Base) por local y mes (Last.app — extracción granular zip v4)
+const VENTAS_MONTHLY = {
+  Bilbao:  [18886.56,14475.22,22983.32,25356.55,26984.33,29822.52,29440.04,30291.70,22996.87,23771.35,25375.77,23927.05,18535.23,16326.68,16042.39,16713.65],
+  Burgos:  [17573.82,16015.84,18563.97,23167.01,19324.73,16999.99,21449.60,22656.21,17560.00,20547.65,20806.66,20404.46,17717.75,17825.01,16766.89,15016.82],
+  Donosti: [0,22856.45,32576.09,44918.34,44272.74,40921.69,46547.92,52951.02,34535.35,32578.00,28815.32,27136.50,20699.78,15082.49,16230.47,17179.62],
+  Pamplona:[39759.51,36773.36,44553.85,41586.49,51192.54,45266.87,51623.54,53532.36,40595.12,42575.56,42430.05,35186.49,35194.27,33415.14,33702.06,31043.17],
+  Vitoria: [20357.83,18387.62,22537.79,21429.46,22840.80,21793.90,24985.79,27933.30,21845.97,25208.06,24936.89,23143.16,21661.41,16127.08,16977.89,12105.38],
+  Zaragoza:[28916.28,27547.27,35196.08,36469.50,36965.22,33912.44,34227.94,37197.57,28063.16,35745.19,30370.63,36646.44,24122.54,23874.15,17233.06,19362.98],
+};
+
 const MERMAS_MONTHLY = {
   Bilbao:[0,0,0,0,0,0,0,44.62,23.42,66.85,0,97.50,382.44,89.77,82.42,115.58],
   Burgos:[0,0,0,0,0,0,0,0,0,0,11.69,0,0,0,0,0],
@@ -614,9 +625,9 @@ const Section2_Caja = ({ months, period }) => {
           </div>
         </div>
 
-        <div style={{ height: 280 }}>
-          <ResponsiveContainer>
-            {view === "multi" ? (
+        {view === "multi" && (
+          <div style={{ height: 280 }}>
+            <ResponsiveContainer>
               <LineChart data={lineData}>
                 <CartesianGrid strokeDasharray="3 3" stroke={RS.lavenderMid} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: RS.text, fontFamily: FONT }} />
@@ -624,11 +635,19 @@ const Section2_Caja = ({ months, period }) => {
                 <Tooltip content={<RSTooltip />} />
                 <Legend wrapperStyle={{ fontSize: 12, fontFamily: FONT }} />
                 <ReferenceLine y={0} stroke={RS.purpleSoft} strokeDasharray="3 3" />
-                {CITIES.map(c => (
-                  <Line key={c} type="monotone" dataKey={c} stroke={CITY_COLORS[c]} strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
-                ))}
+                <Line key="Bilbao"   type="monotone" dataKey="Bilbao"   stroke={CITY_COLORS.Bilbao}   strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
+                <Line key="Burgos"   type="monotone" dataKey="Burgos"   stroke={CITY_COLORS.Burgos}   strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
+                <Line key="Donosti"  type="monotone" dataKey="Donosti"  stroke={CITY_COLORS.Donosti}  strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
+                <Line key="Pamplona" type="monotone" dataKey="Pamplona" stroke={CITY_COLORS.Pamplona} strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
+                <Line key="Vitoria"  type="monotone" dataKey="Vitoria"  stroke={CITY_COLORS.Vitoria}  strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
+                <Line key="Zaragoza" type="monotone" dataKey="Zaragoza" stroke={CITY_COLORS.Zaragoza} strokeWidth={2} dot={{ r: 3 }} activeDot={{ r: 5 }} />
               </LineChart>
-            ) : (
+            </ResponsiveContainer>
+          </div>
+        )}
+        {view !== "multi" && (
+          <div style={{ height: 280 }}>
+            <ResponsiveContainer>
               <ComposedChart data={lineData.map(d => ({ month: d.month, value: d[view] }))}>
                 <CartesianGrid strokeDasharray="3 3" stroke={RS.lavenderMid} />
                 <XAxis dataKey="month" tick={{ fontSize: 10, fill: RS.text, fontFamily: FONT }} />
@@ -639,9 +658,9 @@ const Section2_Caja = ({ months, period }) => {
                   {lineData.map((d, i) => <Cell key={i} fill={d[view] < 0 ? RS.red : RS.green} />)}
                 </Bar>
               </ComposedChart>
-            )}
-          </ResponsiveContainer>
-        </div>
+            </ResponsiveContainer>
+          </div>
+        )}
       </Card>
     </div>
   );
@@ -896,9 +915,19 @@ const Section5_Mermas = ({ months }) => {
     return out;
   }, [months]);
 
+  // Ventas filtradas por el periodo seleccionado (granularidad mensual)
+  const ventasPerCity = useMemo(() => {
+    const out = {};
+    CITIES.forEach(city => {
+      let v = 0;
+      months.forEach(m => { v += VENTAS_MONTHLY[city][ALL_MONTHS.indexOf(m)] || 0; });
+      out[city] = v;
+    });
+    return out;
+  }, [months]);
+
   const totalMermas = CITIES.reduce((s, c) => s + totalsPerCity[c], 0);
-  // Ventas: cumulativas, no se filtran por periodo
-  const totalVentas = CITIES.reduce((s, c) => s + SUMMARY[c].ventas, 0);
+  const totalVentas = CITIES.reduce((s, c) => s + ventasPerCity[c], 0);
   const pctGlobal = totalVentas > 0 ? (totalMermas / totalVentas) * 100 : 0;
 
   return (
@@ -919,7 +948,7 @@ const Section5_Mermas = ({ months }) => {
               </Hover>
             </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: RS.primary, fontFamily: FONT }}>{fmt(totalVentas)}</div>
-            <div style={{ fontSize: 10, color: RS.textLight, fontFamily: FONT }}>Cumulativo Ene 25 — Abr 26 (no filtrable)</div>
+            <div style={{ fontSize: 10, color: RS.textLight, fontFamily: FONT }}>Periodo seleccionado · {months.length} mes(es)</div>
           </div>
           <div style={{ background: "#FFEBEE", padding: 12, borderRadius: 10, textAlign: "center" }}>
             <div style={{ fontSize: 11, color: RS.red, fontWeight: 700, fontFamily: FONT, display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -945,7 +974,7 @@ const Section5_Mermas = ({ months }) => {
           <div style={{ display: "flex", flexDirection: "column", gap: 8, fontFamily: FONT }}>
             {CITIES.map(city => {
               const v = totalsPerCity[city];
-              const ventasCity = SUMMARY[city].ventas;
+              const ventasCity = ventasPerCity[city];
               const pct = ventasCity > 0 ? (v / ventasCity) * 100 : 0;
               const cov = MERMAS_COVERAGE[city];
               return (
@@ -1017,8 +1046,24 @@ const Section5_Mermas = ({ months }) => {
 //  SECTION 6: DESVIACIONES DE ALMACÉN
 // ============================================================
 const Section6_Inventario = ({ months }) => {
+  // Filtro local: "all" muestra el total agregado, o un nombre de ciudad muestra solo ese local
+  const [localFilter, setLocalFilter] = useState("all");
+
   // Filter by months
   const desvFiltered = DESVIACIONES.filter(d => months.includes(d.monthKey));
+
+  // Datos según filtro de local
+  const chartRows = desvFiltered.map(d => {
+    if (localFilter === "all") {
+      return { mes: d.mes, value: d.value, hasData: true };
+    }
+    const v = d.by_local?.[localFilter];
+    return { mes: d.mes, value: v ?? 0, hasData: v !== undefined };
+  });
+
+  // Suma del periodo según filtro
+  const sumPeriodo = chartRows.reduce((s, r) => s + (r.hasData ? r.value : 0), 0);
+  const mesesConDato = chartRows.filter(r => r.hasData).length;
 
   return (
     <div>
@@ -1026,46 +1071,116 @@ const Section6_Inventario = ({ months }) => {
         tooltip="Consumo teórico (escandallos × ventas) menos consumo real de stock" />
 
       <Card>
-        <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.max(1, desvFiltered.length)}, 1fr)`, gap: 8, marginBottom: 16 }}>
-          {desvFiltered.length === 0 ? (
+        {/* Selector de local */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: 0, fontFamily: FONT }}>
+            Vista por local — {localFilter === "all" ? "TOTAL agregado" : localFilter}
+          </h3>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            <button
+              onClick={() => setLocalFilter("all")}
+              style={{
+                padding: "5px 10px", fontSize: 11, fontWeight: 600, borderRadius: 6,
+                background: localFilter === "all" ? RS.primary : RS.lavender,
+                color: localFilter === "all" ? RS.white : RS.primary,
+                border: "none", cursor: "pointer", fontFamily: FONT,
+              }}>
+              TOTAL
+            </button>
+            {CITIES.map(c => (
+              <button key={c} onClick={() => setLocalFilter(c)}
+                style={{
+                  padding: "5px 10px", fontSize: 11, fontWeight: 600, borderRadius: 6,
+                  background: localFilter === c ? CITY_COLORS[c] : RS.lavender,
+                  color: localFilter === c ? RS.white : RS.text, border: "none", cursor: "pointer", fontFamily: FONT,
+                }}>{c}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* KPI summary del filtro */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 10, marginBottom: 14 }}>
+          <div style={{ background: RS.lavender, padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>SUMA DESVIACIÓN PERIODO</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: sumPeriodo < 0 ? RS.green : sumPeriodo > 50000 ? RS.red : RS.primary, fontFamily: FONT }}>{fmt(sumPeriodo)}</div>
+          </div>
+          <div style={{ background: RS.lavender, padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>MESES CON DATO</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: RS.primary, fontFamily: FONT }}>{mesesConDato} / {chartRows.length}</div>
+          </div>
+          <div style={{ background: RS.lavender, padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>MEDIA POR MES (con dato)</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: RS.primary, fontFamily: FONT }}>{mesesConDato > 0 ? fmt(sumPeriodo / mesesConDato) : "—"}</div>
+          </div>
+        </div>
+
+        {/* Cards mensuales */}
+        <div style={{ display: "grid", gridTemplateColumns: `repeat(${Math.max(1, chartRows.length)}, 1fr)`, gap: 8, marginBottom: 16 }}>
+          {chartRows.length === 0 ? (
             <div style={{ gridColumn: "1 / -1", padding: 24, textAlign: "center", color: RS.textLight, fontFamily: FONT, fontSize: 13 }}>
-              No hay datos de desviaciones de almacén para el periodo seleccionado. Los archivos disponibles cubren Ago 25 — Mar 26.
+              No hay datos de desviaciones para el periodo seleccionado. Los archivos disponibles cubren Ago 25 — Mar 26.
             </div>
-          ) : desvFiltered.map(d => {
-            const bg = d.value > 50000 ? "#FFEBEE"
-                    : d.value < -10000 ? "#E8F5E9"
-                    : d.value > 10000 ? "#FFF3E0"
+          ) : chartRows.map((r, i) => {
+            if (!r.hasData) {
+              return (
+                <div key={i} style={{ background: "#F5F5F5", padding: 10, borderRadius: 8, textAlign: "center", border: "1px dashed #CCC" }}>
+                  <div style={{ fontSize: 11, color: RS.textLight, fontFamily: FONT, fontWeight: 600 }}>{r.mes}</div>
+                  <div style={{ fontSize: 12, fontWeight: 700, color: RS.textLight, fontFamily: FONT, fontStyle: "italic" }}>Sin dato</div>
+                </div>
+              );
+            }
+            const bg = r.value > 50000 ? "#FFEBEE"
+                    : r.value < -10000 ? "#E8F5E9"
+                    : r.value > 10000 ? "#FFF3E0"
                     : RS.lavender;
-            const txt = d.value > 50000 ? "#7A0000"
-                    : d.value < 0 ? "#1B5E20"
-                    : d.value > 10000 ? "#E65100"
+            const txt = r.value > 50000 ? "#7A0000"
+                    : r.value < 0 ? "#1B5E20"
+                    : r.value > 10000 ? "#E65100"
                     : RS.text;
             return (
-              <div key={d.monthKey} style={{ background: bg, padding: 10, borderRadius: 8, textAlign: "center" }}>
-                <div style={{ fontSize: 11, color: RS.textLight, fontFamily: FONT, fontWeight: 600 }}>{d.mes}</div>
-                <div style={{ fontSize: 14, fontWeight: 800, color: txt, fontFamily: FONT }}>{fmtShort(d.value)}</div>
-                <div style={{ fontSize: 9, color: RS.textLight, marginTop: 4, fontFamily: FONT, lineHeight: 1.3 }}>
-                  {d.locales.length} locales
-                </div>
+              <div key={i} style={{ background: bg, padding: 10, borderRadius: 8, textAlign: "center" }}>
+                <div style={{ fontSize: 11, color: RS.textLight, fontFamily: FONT, fontWeight: 600 }}>{r.mes}</div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: txt, fontFamily: FONT }}>{fmtShort(r.value)}</div>
               </div>
             );
           })}
         </div>
 
-        {desvFiltered.length > 0 && (
-          <div style={{ height: 220 }}>
+        {/* Bar chart — separado en dos ResponsiveContainer (recharts requiere child único fijo) */}
+        {chartRows.length > 0 && localFilter === "all" && (
+          <div style={{ height: 280 }}>
             <ResponsiveContainer>
-              <BarChart data={desvFiltered.map(d => ({ mes: d.mes, value: d.value }))}>
+              <BarChart data={desvFiltered.map(d => {
+                const row = { mes: d.mes };
+                CITIES.forEach(c => { row[c] = (d.by_local && d.by_local[c] !== undefined) ? d.by_local[c] : null; });
+                return row;
+              })}>
+                <CartesianGrid strokeDasharray="3 3" stroke={RS.lavenderMid} />
+                <XAxis dataKey="mes" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} />
+                <YAxis tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort} />
+                <Tooltip content={<RSTooltip />} />
+                <Legend wrapperStyle={{ fontSize: 12, fontFamily: FONT }} />
+                <ReferenceLine y={0} stroke={RS.purpleSoft} strokeDasharray="3 3" />
+                <Bar dataKey="Bilbao"   name="Bilbao"   fill={CITY_COLORS.Bilbao}   radius={[3,3,0,0]} />
+                <Bar dataKey="Burgos"   name="Burgos"   fill={CITY_COLORS.Burgos}   radius={[3,3,0,0]} />
+                <Bar dataKey="Donosti"  name="Donosti"  fill={CITY_COLORS.Donosti}  radius={[3,3,0,0]} />
+                <Bar dataKey="Pamplona" name="Pamplona" fill={CITY_COLORS.Pamplona} radius={[3,3,0,0]} />
+                <Bar dataKey="Vitoria"  name="Vitoria"  fill={CITY_COLORS.Vitoria}  radius={[3,3,0,0]} />
+                <Bar dataKey="Zaragoza" name="Zaragoza" fill={CITY_COLORS.Zaragoza} radius={[3,3,0,0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+        {chartRows.length > 0 && localFilter !== "all" && (
+          <div style={{ height: 280 }}>
+            <ResponsiveContainer>
+              <BarChart data={chartRows.map(r => ({ mes: r.mes, value: r.hasData ? r.value : null }))}>
                 <CartesianGrid strokeDasharray="3 3" stroke={RS.lavenderMid} />
                 <XAxis dataKey="mes" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} />
                 <YAxis tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort} />
                 <Tooltip content={<RSTooltip />} />
                 <ReferenceLine y={0} stroke={RS.purpleSoft} strokeDasharray="3 3" />
-                <Bar dataKey="value">
-                  {desvFiltered.map((d, i) => (
-                    <Cell key={i} fill={d.value > 50000 ? RS.red : d.value < 0 ? RS.green : d.value > 10000 ? RS.orange : RS.primary} />
-                  ))}
-                </Bar>
+                <Bar dataKey="value" name={localFilter} fill={CITY_COLORS[localFilter]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
