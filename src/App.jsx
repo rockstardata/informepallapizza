@@ -1226,7 +1226,7 @@ const Section7_Correlacion = ({ months }) => {
 
   return (
     <div>
-      <SectionTitle icon="🔗" title="Análisis de correlación" subtitle={`¿Se relacionan las anulaciones con el dinero que falta? · ${periodoLabel}`} />
+      <SectionTitle icon="🔗" title="Correlación I — Caja vs Anulaciones" subtitle={`¿Se relacionan las anulaciones (facturas-tickets eliminados) con el dinero que falta de caja? · ${periodoLabel}`} />
 
       <Card>
         <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 12px 0", fontFamily: FONT }}>
@@ -1303,6 +1303,199 @@ const Section7_Correlacion = ({ months }) => {
           </div>
         </div>
       </Card>
+    </div>
+  );
+};
+
+// ============================================================
+//  SECTION 7B: CORRELACIÓN II — ANULACIONES vs DESVIACIONES DE INVENTARIO
+// ============================================================
+// Hipótesis económica: si una anulación oculta una venta cobrada en efectivo,
+// el producto físico SÍ se consumió (sale del stock real) pero la venta NO se
+// registra en T-Spoon → consumo teórico bajo, consumo real igual → desviación
+// POSITIVA en almacén. Una correlación positiva sostenida entre anulaciones
+// y desviaciones positivas sugiere fraude estructurado, no simple error operativo.
+
+const Section7B_CorrelacionInventario = ({ months }) => {
+  const [localFilter, setLocalFilter] = useState("all");
+
+  // Construir puntos: por cada (local, mes) con dato de desviación, sumar anulaciones del mes
+  const dataPoints = useMemo(() => {
+    const points = [];
+    const localesIncluidos = localFilter === "all" ? CITIES : [localFilter];
+    months.forEach(mk => {
+      const idx = ALL_MONTHS.indexOf(mk);
+      if (idx === -1) return;
+      const desv = DESVIACIONES.find(d => d.monthKey === mk);
+      if (!desv) return;
+      localesIncluidos.forEach(city => {
+        const desvLocal = desv.by_local && desv.by_local[city];
+        if (desvLocal === undefined) return;
+        const factVal = (FACT_MONTHLY[city][idx] && FACT_MONTHLY[city][idx][1]) || 0;
+        const prodFactVal = (PROD_MONTHLY[city][idx] && PROD_MONTHLY[city][idx][2]) || 0;
+        const anulaciones = factVal + prodFactVal;
+        points.push({
+          x: anulaciones,
+          y: desvLocal,
+          city, mes: desv.mes, monthKey: mk,
+          factVal, prodFactVal, z: 100,
+        });
+      });
+    });
+    return points;
+  }, [months, localFilter]);
+
+  // KPIs agregados
+  const sumAnul = dataPoints.reduce((s, p) => s + p.x, 0);
+  const sumDesv = dataPoints.reduce((s, p) => s + p.y, 0);
+
+  // Coeficiente de correlación de Pearson (sólo si hay variación)
+  const pearson = useMemo(() => {
+    const n = dataPoints.length;
+    if (n < 3) return null;
+    const meanX = dataPoints.reduce((s, p) => s + p.x, 0) / n;
+    const meanY = dataPoints.reduce((s, p) => s + p.y, 0) / n;
+    let num = 0, denX = 0, denY = 0;
+    dataPoints.forEach(p => {
+      const dx = p.x - meanX, dy = p.y - meanY;
+      num += dx * dy; denX += dx * dx; denY += dy * dy;
+    });
+    if (denX === 0 || denY === 0) return null;
+    return num / Math.sqrt(denX * denY);
+  }, [dataPoints]);
+
+  // Interpretación cualitativa de la correlación
+  const interp = useMemo(() => {
+    if (pearson === null) return { txt: "Datos insuficientes para calcular correlación.", color: RS.textLight };
+    const abs = Math.abs(pearson);
+    let strength = abs < 0.2 ? "muy débil" : abs < 0.4 ? "débil" : abs < 0.6 ? "moderada" : abs < 0.8 ? "fuerte" : "muy fuerte";
+    let dir = pearson > 0 ? "positiva" : "negativa";
+    let txt = `Correlación de Pearson ${strength} ${dir} (r = ${pearson.toFixed(3)}).`;
+    if (pearson > 0.4) txt += " Hipótesis: las anulaciones podrían estar ocultando ventas que sí consumieron stock — consistente con patrón de fraude estructurado.";
+    else if (pearson < -0.4) txt += " Las anulaciones se relacionan con desviaciones negativas (consumo real menor que el teórico) — patrón compatible con sobre-registro o errores de captura, no con fraude.";
+    else txt += " Sin patrón claro: las anulaciones y las desviaciones de inventario se mueven de forma independiente. Las desviaciones se explican mejor por errores de captura en T-Spoon (caso documentado: Panceta Arrotalota Vitoria Dic 25).";
+    return { txt, color: pearson > 0.4 ? RS.red : pearson < -0.4 ? RS.orange : RS.primary };
+  }, [pearson]);
+
+  return (
+    <div>
+      <SectionTitle icon="🔬" title="Correlación II — Anulaciones vs Desviaciones de inventario"
+        subtitle="¿Las anulaciones (facturas-tickets eliminados + productos elim. tras facturar) se relacionan con las desviaciones de inventario en T-Spoon?"
+        tooltip="Si una anulación oculta una venta cobrada en efectivo, el stock se consumió pero la venta no se contabilizó: aparece como desviación positiva en almacén" />
+
+      <Card>
+        {/* Filtro local */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
+          <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: 0, fontFamily: FONT }}>
+            Vista — {localFilter === "all" ? "TODOS los locales" : localFilter}
+          </h3>
+          <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
+            <button onClick={() => setLocalFilter("all")}
+              style={{ padding: "5px 10px", fontSize: 11, fontWeight: 600, borderRadius: 6,
+                background: localFilter === "all" ? RS.primary : RS.lavender,
+                color: localFilter === "all" ? RS.white : RS.primary,
+                border: "none", cursor: "pointer", fontFamily: FONT }}>
+              TODOS
+            </button>
+            {CITIES.map(c => (
+              <button key={c} onClick={() => setLocalFilter(c)}
+                style={{ padding: "5px 10px", fontSize: 11, fontWeight: 600, borderRadius: 6,
+                  background: localFilter === c ? CITY_COLORS[c] : RS.lavender,
+                  color: localFilter === c ? RS.white : RS.text,
+                  border: "none", cursor: "pointer", fontFamily: FONT }}>{c}</button>
+            ))}
+          </div>
+        </div>
+
+        {/* KPIs */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 14 }}>
+          <div style={{ background: RS.lavender, padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>PUNTOS ANALIZADOS</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: RS.primary, fontFamily: FONT }}>{dataPoints.length}</div>
+            <div style={{ fontSize: 9, color: RS.textLight, fontFamily: FONT }}>(local × mes con datos)</div>
+          </div>
+          <div style={{ background: "#FFF3E0", padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.orange, fontWeight: 700, fontFamily: FONT }}>Σ ANULACIONES</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: "#E65100", fontFamily: FONT }}>{fmt(sumAnul)}</div>
+            <div style={{ fontSize: 9, color: RS.textLight, fontFamily: FONT }}>Facturas-tickets + prod. facturar</div>
+          </div>
+          <div style={{ background: sumDesv > 50000 ? "#FFEBEE" : sumDesv < 0 ? "#E8F5E9" : RS.lavender, padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>Σ DESVIACIÓN</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: sumDesv > 50000 ? "#7A0000" : sumDesv < 0 ? "#1B5E20" : RS.primary, fontFamily: FONT }}>{fmt(sumDesv)}</div>
+            <div style={{ fontSize: 9, color: RS.textLight, fontFamily: FONT }}>(positivo = falta stock)</div>
+          </div>
+          <div style={{ background: pearson !== null && pearson > 0.4 ? "#FFEBEE" : RS.lavender, padding: 10, borderRadius: 8, textAlign: "center" }}>
+            <div style={{ fontSize: 10, color: RS.purpleSoft, fontWeight: 700, fontFamily: FONT }}>CORRELACIÓN PEARSON</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: pearson === null ? RS.textLight : pearson > 0.4 ? RS.red : pearson < -0.4 ? RS.orange : RS.primary, fontFamily: FONT }}>
+              {pearson === null ? "—" : pearson.toFixed(3)}
+            </div>
+            <div style={{ fontSize: 9, color: RS.textLight, fontFamily: FONT }}>(rango: -1 a +1)</div>
+          </div>
+        </div>
+
+        {/* Scatter chart */}
+        <div style={{ height: 320 }}>
+          <ResponsiveContainer>
+            <ScatterChart>
+              <CartesianGrid strokeDasharray="3 3" stroke={RS.lavenderMid} />
+              <XAxis type="number" dataKey="x" name="Anulaciones" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort}
+                label={{ value: "Anulaciones — facturas-tickets + prod. facturar (€)", position: "insideBottom", offset: -8, fontSize: 11, fontFamily: FONT, fill: RS.text }} />
+              <YAxis type="number" dataKey="y" name="Desviación inventario" tick={{ fontSize: 11, fill: RS.text, fontFamily: FONT }} tickFormatter={fmtShort}
+                label={{ value: "Desviación inventario (€)", angle: -90, position: "insideLeft", fontSize: 11, fontFamily: FONT, fill: RS.text }} />
+              <ZAxis type="number" dataKey="z" range={[80, 200]} />
+              <ReferenceLine y={0} stroke={RS.purpleSoft} strokeDasharray="3 3" />
+              <Tooltip content={({ active, payload }) => {
+                if (!active || !payload || !payload.length) return null;
+                const d = payload[0].payload;
+                return (
+                  <div style={{ background: RS.white, border: `1px solid ${RS.purpleSoft}`, borderRadius: 8, padding: 10, fontSize: 12, fontFamily: FONT }}>
+                    <div style={{ fontWeight: 800, color: RS.primary, marginBottom: 4 }}>{d.city} · {d.mes}</div>
+                    <div style={{ color: RS.text, fontSize: 11 }}>Facturas-tickets: {fmt(d.factVal)}</div>
+                    <div style={{ color: RS.text, fontSize: 11 }}>Prod. eliminados tras facturar: {fmt(d.prodFactVal)}</div>
+                    <div style={{ color: RS.text, fontSize: 11, fontWeight: 700, borderTop: `1px solid ${RS.lavenderMid}`, marginTop: 4, paddingTop: 4 }}>Total anulaciones: {fmt(d.x)}</div>
+                    <div style={{ color: d.y < 0 ? RS.green : d.y > 50000 ? RS.red : RS.text, fontWeight: 700 }}>Desviación inventario: {fmt(d.y)}</div>
+                  </div>
+                );
+              }} />
+              <Scatter data={dataPoints} fill={RS.primary}>
+                {dataPoints.map((d, i) => <Cell key={i} fill={CITY_COLORS[d.city]} />)}
+              </Scatter>
+            </ScatterChart>
+          </ResponsiveContainer>
+        </div>
+
+        {localFilter === "all" && (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, marginTop: 8, justifyContent: "center", fontFamily: FONT }}>
+            {CITIES.map(c => (
+              <div key={c} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11 }}>
+                <span style={{ width: 10, height: 10, borderRadius: 5, background: CITY_COLORS[c], display: "inline-block" }} />
+                <span style={{ color: RS.text }}>{c}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </Card>
+
+      <Card style={{ marginTop: 16 }}>
+        <h3 style={{ fontSize: 14, fontWeight: 700, color: RS.primary, margin: "0 0 10px 0", fontFamily: FONT }}>Interpretación dinámica</h3>
+        <p style={{ fontSize: 13, color: interp.color, lineHeight: 1.6, fontFamily: FONT, fontWeight: 600 }}>
+          {interp.txt}
+        </p>
+        <div style={{ background: RS.lavender, padding: 12, borderRadius: 8, marginTop: 10, fontSize: 12, color: RS.text, lineHeight: 1.5, fontFamily: FONT }}>
+          <strong style={{ color: RS.primary }}>Cómo leer este análisis:</strong>
+          <ul style={{ margin: "6px 0 0 18px", padding: 0 }}>
+            <li><strong>Eje X (anulaciones):</strong> suma del importe de facturas-tickets eliminados + productos eliminados después de facturar. Cada punto = un par (local, mes).</li>
+            <li><strong>Eje Y (desviación):</strong> diferencia entre consumo teórico y real registrada en T-Spoon ese mes para ese local.</li>
+            <li><strong>Cuadrante superior derecho</strong> (anulaciones altas + desviación positiva): zona de alerta. Sugiere ventas ocultas que sí consumieron stock.</li>
+            <li><strong>Cuadrante superior izquierdo</strong> (pocas anulaciones + desviación positiva): probable error de captura de inventario, no fraude.</li>
+            <li><strong>Cuadrante inferior</strong> (desviación negativa): el stock declarado supera al consumido — error de inventario o sobrante real.</li>
+          </ul>
+        </div>
+      </Card>
+
+      <Alert type="warning">
+        <strong>Limitación importante:</strong> esta correlación NO prueba causalidad. Las desviaciones de inventario en T-Spoon están dominadas por errores de captura conocidos (unidades incorrectas, escandallos mal configurados — caso documentado de la Panceta Arrotalota en Vitoria, Dic 25, +117.000 €). Antes de concluir fraude, hay que aislar producto a producto cuando la correlación parece alta. Esta sección es una herramienta de <strong>screening</strong> para identificar pares (local, mes) donde merece la pena bajar al detalle.
+      </Alert>
     </div>
   );
 };
@@ -1401,7 +1594,8 @@ export default function Report() {
     { label: "Productos",        component: <Section4_Productos months={months} /> },
     { label: "Mermas",           component: <Section5_Mermas months={months} /> },
     { label: "Inventario",       component: <Section6_Inventario months={months} /> },
-    { label: "Correlación",      component: <Section7_Correlacion months={months} /> },
+    { label: "Correlación I",    component: <Section7_Correlacion months={months} /> },
+    { label: "Correlación II",   component: <Section7B_CorrelacionInventario months={months} /> },
     { label: "Conclusiones",     component: <Section8_Conclusiones /> },
   ];
 
